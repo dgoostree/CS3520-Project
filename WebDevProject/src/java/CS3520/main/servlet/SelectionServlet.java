@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import CS3520.main.util.Monitor;
 
 /**
  *
  * @author Keith
  */
+
 public class SelectionServlet extends HttpServlet {
 
     /**
@@ -33,28 +35,39 @@ public class SelectionServlet extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
-        String iT = request.getParameter(itemType);
-        String par = request.getParameter(param);
+        String iT = request.getParameter("itemType");
+        String par = request.getParameter("param");
         ArrayList list = new ArrayList();
         
+        
         try {
-            if(iT.equals("mon")){
-                list.add(iT);
-                list.add(par);
+            switch (iT) {
+                case "mon":
+                    String[] monBrands = {"ASUS", "LG", "Samsung", "ViewSonic"};
+                    for(int i = 0; i < 4; i++){
+                        Monitor aMon = new Monitor(iT, par, monBrands[i]);
+                        list.add(aMon);
+                    }   break;
+                case "harddrive":
+                    String[] hDBrands = {"Maxtor", "Seagate", "WD"};
+                    for(int i = 0; i < 3; i++){
+                        Monitor aMon = new Monitor(iT, par, hDBrands[i]);
+                        list.add(aMon);
+                    }   break;
+                default:
+                    String[] caseBrands = {"Cooler Master", "RaidMax", "Rosewill", "Thermaltake"};
+                    for(int i = 0; i < 4; i++){
+                        Monitor aMon = new Monitor(iT, par, caseBrands[i]);
+                        list.add(aMon);
+                    }   break;
             }
-            else if(iT.equals("harddrive")){
-                list.add(iT);
-                list.add(par);
-            }
-            else{
-                list.add(iT);
-                list.add(par);
-            }
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/orderConfirmation.jsp");
         }
         catch(Exception e){
             out.println("<h1>"+e.getStackTrace()+"</h1>");
         }
+        request.setAttribute("inventory", list);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/orderConfirmation.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
