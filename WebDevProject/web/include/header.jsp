@@ -3,9 +3,9 @@
     Created on : Oct 30, 2014, 3:02:49 PM
     Author     : Keith
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<<<<<<< HEAD
 
 <link rel="stylesheet" href="style/standard.css"/>
 
@@ -37,3 +37,7 @@
 
 <hr>
 
+=======
+<h1 align="center">Cheap-O Components</h1>
+<hr>
+>>>>>>> origin/master
