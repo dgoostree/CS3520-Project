@@ -5,8 +5,11 @@
 --%>
 
 <%@page import="java.util.*" %>
+<link rel="stylesheet" href="style/standard.css"/>
+
 <%
     int year = Calendar.getInstance().get(Calendar.YEAR);
     %>
     <hr>
-    <h6>&COPY; <%= year %> DGKE Worldwide Enterprises</h6>
+    <h6 class="copyright">&COPY; <%= year %> DGKE Worldwide Enterprises</h6>
+    

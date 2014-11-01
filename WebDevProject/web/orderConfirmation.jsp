@@ -11,15 +11,18 @@
 <%
     ArrayList<Monitor> itemList = (ArrayList<Monitor>) request.getAttribute("inventory");
     String type = request.getParameter("itemType");
+    String modifier = "";
     if(type.startsWith("m")){
-        type = "monitors";
+        type = "monitor";
+        modifier = " inch";
     }
     else if(type.startsWith("h")){
-        type = "hard drives";
+        type = "hard drive";
+        modifier = " GB";
     }
     else
     {
-        type = "cases";
+        type = "case";
     }
     int i = 0;
 %>
@@ -29,26 +32,38 @@
         <title>Inventory List</title>
     </head>
     <body>
-        <h1>Here's the </h1> <%= type %> <h1> we have in stock!</h1>
-        <hr>
+        <jsp:include page="/include/header.jsp"/>
+        
+        <h3>Here are the <%= type %>s we have in stock:</h3>
+        
         <table>
-            <tr>
+            
                 <%
                     for(; i<itemList.size(); i++){
-                        %>
-                        <td>
-                            <%= itemList.get(i).getType() %>
-                            <br>
-                            <%= itemList.get(i).getParam() %>
-                            <br>
-                            <%= itemList.get(i).getName() %>
-                            <br>
-                        </td>
+                    %>
+                        <tr>
+                            <td width="100px">
+                                <%= itemList.get(i).getName() %>
+                            </td>
+                            <td width="100px">                                
+                                <%= itemList.get(i).getParam() + modifier %>
+                            </td>
+                            <td width="100px">
+                                <%= type %>
+                            </td>              
+                        </tr>
                         <%
                     }
                 %>
             </tr>
         </table>
+        
+        <br>
+        <form action="index.jsp" method="post">
+            <input type="Submit" value="New search"/>
+        </form>
+            
+        <jsp:include page="/include/footer.jsp"/>
     </body>
     
 </html>

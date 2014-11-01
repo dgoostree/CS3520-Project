@@ -8,3 +8,8 @@ and open the template in the editor.
     Author     : keitheveritt
 */
 
+td.error {font-size: 8pt; font-style: italic; color: Red; text-align: left;}
+form.accountHistory { float:right; }
+h1.pageTitle {float:left;}
+.clearer { clear: both; }
+h6.copyright {font-style: italic;}
