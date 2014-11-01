@@ -16,6 +16,11 @@
     <body>
         <jsp:include page="/include/header.jsp"/>
         <h1>Hello World!</h1>
+        <form action="SelectionServlet" method="get">
+            <input type="text" name="itemType"/><input type="text" name="param"/>
+            <br>
+            <input type="submit" value="Send"/>
+        </form>
         <jsp:include page="/include/footer.jsp"/>
     </body>
 </html>

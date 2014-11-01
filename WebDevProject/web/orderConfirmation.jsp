@@ -22,6 +22,7 @@
         type = "cases";
     }
     int i = 0;
+    String t, p, n;
 %>
 <html>
     <head>
@@ -29,26 +30,37 @@
         <title>Inventory List</title>
     </head>
     <body>
-        <h1>Here's the </h1> <%= type %> <h1> we have in stock!</h1>
-        <hr>
-        <table>
+        <jsp:include page="/include/header.jsp"/>
+        <h1>Here's the <%= type %>  we have in stock!</h1>
+        <table cellpadding="3px" rules="cols">
             <tr>
+                <td align="left">
+                     <u><%="Brand:"%></u>
+                     <br><br>
+                     <u><%="Size/Capacity/Color:" %></u>    
+                     <br><br>
+                     <u><%= "Item Type:" %></u>
+                     <br><br>
+                </td>
                 <%
                     for(; i<itemList.size(); i++){
                         %>
-                        <td>
-                            <%= itemList.get(i).getType() %>
-                            <br>
-                            <%= itemList.get(i).getParam() %>
-                            <br>
+                        <td align="center">
                             <%= itemList.get(i).getName() %>
-                            <br>
+                            <br><br>
+                            <%= itemList.get(i).getParam() %>
+                            <br><br>
+                            <%= itemList.get(i).getType() %>
+                            <br><br>
                         </td>
                         <%
                     }
                 %>
             </tr>
         </table>
+            <hr>
+            <a href="index.jsp">Home</a>
+        <jsp:include page="/include/footer.jsp"/>
     </body>
     
 </html>
