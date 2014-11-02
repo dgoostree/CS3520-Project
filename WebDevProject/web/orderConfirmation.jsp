@@ -34,7 +34,7 @@
     </head>
     <body>
         <jsp:include page="/include/header.jsp"/>
-        <h3>Here are the <%= type %>s we have in stock:</h3>
+        <h3 class="listStart">Here are the <%= type %>s we have in stock:</h3>
         
         <table>
             
