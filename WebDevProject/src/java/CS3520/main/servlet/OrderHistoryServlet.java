@@ -22,14 +22,11 @@ public class OrderHistoryServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //Error check the input here
-        
         //Forward to order history
-        
-        //Or the "empty history" page
-        String tmp = (String) request.getParameter("orderCount");
-        request.setAttribute("loopCount", Integer.valueOf(tmp));
+        String tmp = (String) request.getParameter("orderCount");  //get string value of the input
+        request.setAttribute("loopCount", Integer.valueOf(tmp));  //convert to integer and add to request object
         getServletContext().getRequestDispatcher("/orderHistory.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
