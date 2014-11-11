@@ -5,12 +5,18 @@
  */
 package CS3520.main.util;
 
+import java.util.Random;
+import java.io.Serializable;
 /**
  *
  * @author Keith
  */
-public class Monitor {
+
+public class Monitor implements Serializable{
     public Monitor(String iT, String par, String name){
+        Random r = new Random();
+        double tmp = r.nextInt(101);
+        price = (Double.toString(tmp+=r.nextDouble()));
         setType(iT);
         setPar(par);
         setBrand(name);
@@ -43,4 +49,5 @@ public class Monitor {
     private String itemType;
     private String param;
     private String name;
+    private String price;
 }

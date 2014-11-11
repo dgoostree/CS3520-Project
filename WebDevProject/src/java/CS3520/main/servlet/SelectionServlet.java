@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import CS3520.main.util.Monitor;
+import CS3520.main.util.ItemGenerator;
 
 /**
  *
@@ -41,26 +41,7 @@ public class SelectionServlet extends HttpServlet {
         
         
         try {
-            switch (iT) {
-                case "mon":
-                    String[] monBrands = {"ASUS", "LG", "Samsung", "ViewSonic"};
-                    for(int i = 0; i < 4; i++){
-                        Monitor aMon = new Monitor(iT, par, monBrands[i]);
-                        list.add(aMon);
-                    }   break;
-                case "harddrive":
-                    String[] hDBrands = {"Maxtor", "Seagate", "WD"};
-                    for(int i = 0; i < 3; i++){
-                        Monitor aMon = new Monitor(iT, par, hDBrands[i]);
-                        list.add(aMon);
-                    }   break;
-                default:
-                    String[] caseBrands = {"Cooler Master", "RaidMax", "Rosewill", "Thermaltake"};
-                    for(int i = 0; i < 4; i++){
-                        Monitor aMon = new Monitor(iT, par, caseBrands[i]);
-                        list.add(aMon);
-                    }   break;
-            }
+            list = ItemGenerator.getItemList(iT, par);
         }
         catch(Exception e){
             out.println("<h1>"+e.getStackTrace()+"</h1>");

@@ -7,6 +7,8 @@
 <%@page import="CS3520.main.util.Monitor"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <%
     ArrayList<Monitor> itemList = (ArrayList<Monitor>) request.getAttribute("inventory");
@@ -33,29 +35,28 @@
         <title>Inventory List</title>
     </head>
     <body>
+        
+
         <jsp:include page="/include/header.jsp"/>
         <h3 class="listStart">Here are the <%= type %>s we have in stock:</h3>
         
         <table>
-            
-                <%
-                    for(; i<itemList.size(); i++){
-                    %>
+            <c:forEach var="monitor" items="${inventory}"> 
+                
                         <tr>
                             <td width="100px">
-                                <%= itemList.get(i).getName() %>
+                                <%--<%= itemList.get(i).getName() %>--%>
+                                ${monitor.name}
                             </td>
                             <td width="100px">                                
-                                <%= itemList.get(i).getParam() + modifier %>
+                                <%--<%= itemList.get(i).getParam() + modifier %>--%>
                             </td>
                             <td width="100px">
-                                <%= type %>
+                                <%--<%= type %>--%>
                             </td>              
                         </tr>
 
-                        <%
-                    }
-                %>
+            </c:forEach>
         </table>
         <br>
         <form action="index.jsp" method="post">
