@@ -27,7 +27,8 @@ public class OrderHistoryServlet extends HttpServlet {
         //Forward to order history
         
         //Or the "empty history" page
-        
+        String tmp = (String) request.getParameter("orderCount");
+        request.setAttribute("loopCount", Integer.valueOf(tmp));
         getServletContext().getRequestDispatcher("/orderHistory.jsp").forward(request, response);
     }
 
