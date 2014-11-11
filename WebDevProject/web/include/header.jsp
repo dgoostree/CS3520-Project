@@ -13,7 +13,7 @@
     
     <h1 class="pageTitle">Cheap-O Components</h1>
         
-    <form class="accountHistory" action="orderHistory.jsp" method="post">
+    <form class="accountHistory" action="OrderHistory" method="post">
         <table>
             <tr>
                 <td>
