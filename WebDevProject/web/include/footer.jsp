@@ -8,10 +8,9 @@
 <link rel="stylesheet" href="style/standard.css"/>
 
 
-<div id="footer">
+
     <%
         int year = Calendar.getInstance().get(Calendar.YEAR);
         %>
         
         <h6 class="copyright">&COPY; <%= year %> DGKE Worldwide Enterprises</h6>
-</div>
