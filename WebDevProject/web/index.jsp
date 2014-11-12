@@ -3,6 +3,7 @@
     Created on : Oct 27, 2014, 5:05:04 PM
     Author     : keitheveritt
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,21 +17,22 @@
         <script>
             function selectionChanged(selection){  //on selection change
                 var label = "";
-                
+                                
                 switch(selection){   //set the text for the label on the parameter
                     case 1: 
-                        label = "Size:";
+                        label = "${sessionScope.parameterLabel[0]}";
                         break;
                     case 2:
-                        label = "Capacity:";
+                        label = "${sessionScope.parameterLabel[1]}";
                         break;
                     case 3:
-                        label = "Color";
+                        label = "${sessionScope.parameterLabel[2]}";
                         break;
                     default:
                         break;
                 }
-                    
+                            
+                
                 document.getElementById("paramName").innerHTML = label;
                 populateParams(selection);
                 return;
@@ -45,7 +47,6 @@
                 
                 var paramNames;
                 var paramValues;
-                
                 switch(selection){ //initialize the data to be filled
                     case 1:   //monitors
                         paramNames = ["17 inch", "21 inch", "24 inch", "27 inch"];
@@ -62,8 +63,8 @@
                     default:
                         break;
                 }
+                            
                 
-              
                 for(i=0; i < paramNames.length; i++){ //for each in the array, add it
                     var newOption = document.createElement("option");
                     newOption.text = paramNames[i];
@@ -129,9 +130,9 @@
                 
                         <select name="itemType" id="itemSelect" onchange="if(this.selectedIndex > 0) selectionChanged(this.selectedIndex);">
                             <option value="">--</option> 
-                            <option value="monitor">Monitor</option>
-                            <option value="hard-drive">Hard Drive</option>
-                            <option value="case">Case</option>
+                           <c:forEach var="prodType" items="${sessionScope.productNames}" varStatus="loop">
+                               <option value="${sessionScope.productValues[loop.count - 1]}">${prodType}</option>
+                           </c:forEach>
                         </select>
                     </td>
                     <td class="error" id="itemError"></td>
@@ -157,6 +158,7 @@
             
             
         </form>
+        
         <jsp:include page="/include/footer.jsp"/>
     </body>
 </html>

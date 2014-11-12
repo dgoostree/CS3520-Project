@@ -12,6 +12,10 @@
         <servlet-name>AccountLogin</servlet-name>
         <servlet-class>CS3520.main.servlet.AccountLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InitializeParameters</servlet-name>
+        <servlet-class>CS3520.main.servlet.InitializeParameters</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SelectionServlet</servlet-name>
         <url-pattern>/SelectionServlet</url-pattern>
@@ -24,13 +28,17 @@
         <servlet-name>AccountLogin</servlet-name>
         <url-pattern>/AccountLogin</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InitializeParameters</servlet-name>
+        <url-pattern>/InitializeParameters</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>InitializeParameters</welcome-file>
     </welcome-file-list>
 servlet-class&gt;
     </web-app>
