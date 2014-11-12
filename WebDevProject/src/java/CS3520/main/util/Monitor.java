@@ -42,6 +42,18 @@ public class Monitor implements Serializable{
         return param;
     }
     
+    public String getParamToString(){
+        if( itemType.equals("monitor")){
+            return param + " inch";
+        }
+        else if( itemType.equals("hard-drive")){
+            return param + " GB";
+        }
+        else {
+            return param ;
+        }
+    }
+    
     public String getName(){
         return name;
     }

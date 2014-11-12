@@ -129,8 +129,8 @@
                 
                         <select name="itemType" id="itemSelect" onchange="if(this.selectedIndex > 0) selectionChanged(this.selectedIndex);">
                             <option value="">--</option> 
-                            <option value="mon">Monitor</option>
-                            <option value="harddrive">Hard Drive</option>
+                            <option value="monitor">Monitor</option>
+                            <option value="hard-drive">Hard Drive</option>
                             <option value="case">Case</option>
                         </select>
                     </td>
