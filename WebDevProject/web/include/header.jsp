@@ -3,37 +3,28 @@
     Created on : Oct 30, 2014, 3:02:49 PM
     Author     : Keith
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-
 <link rel="stylesheet" href="style/standard.css"/>
 
-<div>
+<div id="header">
     
     <h1 class="pageTitle">Cheap-O Components</h1>
-        
-    <form class="accountHistory" action="OrderHistory" method="post">
-        <table>
-            <tr>
-                <td>
-                    View order history:
-                </td>
-                <td>
-                    <input type="text" size="2" name="orderCount">
-                </td>
-                <td>
-                    <input type="Submit" value="Submit">
-                </td>
-            </tr>
-        </table>
-    </form>
-</div>
+    
+    <div class="loginLink">
+        <c:if test="${sessionScope.loggedIn==true}">
+            <a href="OrderHistory">${sessionScope.userName}</a> <a href="AccountLogin">Log out</a>
+        </c:if>
+        <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">
 
-<br>
-<br>
+                <a href="AccountLogin">Login</a>  Create Account
+        </c:if>
+    </div>
+</div>
 <br>
 <br>
 
 <hr>
-

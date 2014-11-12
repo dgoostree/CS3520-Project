@@ -9,6 +9,7 @@
 package CS3520.main.util;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -40,6 +41,11 @@ public class ItemGenerator implements Serializable{
                     }   break;
             }
         return list;
+    }
+    
+    public static int getOrderHistoryCount(){
+        Random r = new Random();
+        return r.nextInt(25);
     }
     
 }

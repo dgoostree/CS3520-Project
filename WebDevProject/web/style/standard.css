@@ -9,8 +9,28 @@ and open the template in the editor.
 */
 
 td.error {font-size: 8pt; font-style: italic; color: Red; text-align: left;}
-form.accountHistory { float:right; }
+form.headerForm { float:right; }
+div.loginLink { float:right; }
+div.pageContent { text-align: center; }
 h1.pageTitle {text-align: center; font-weight: bold;}
 .clearer { clear: both; }
 h6.copyright {font-style: italic; color: crimson;}
 h3.listStart{text-decoration: underline;}
+
+body {
+    margin: 0 0 60px; /* bottom = footer height */
+}
+
+#footer {
+   position:absolute;
+   bottom:0;
+   width:99%;
+   height:60px;   /* Height of the footer */
+}
+
+.wrapper {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 auto -60px;
+}

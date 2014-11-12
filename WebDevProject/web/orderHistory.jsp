@@ -3,6 +3,7 @@
     Created on : Oct 31, 2014, 6:21:55 PM
     Author     : Darren
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,15 +12,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order History</title>
     </head>
-    <body>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        
+    <body>        
         <jsp:include page="/include/header.jsp"/>
         
         <h3>Account order history: </h3>
         
-   
-
         <table>         
             <c:forEach  var="i" begin="${1}" end="${requestScope.loopCount}" >
                 <tr>
@@ -28,7 +25,7 @@
                 </tr>
             </c:forEach>
         </table>
-        
+
         <form action="index.jsp" method="post">
             <input type="Submit" value="Back"/>
         </form>

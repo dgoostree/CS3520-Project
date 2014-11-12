@@ -8,6 +8,10 @@
         <servlet-name>OrderHistoryServlet</servlet-name>
         <servlet-class>CS3520.main.servlet.OrderHistoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccountLogin</servlet-name>
+        <servlet-class>CS3520.main.servlet.AccountLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SelectionServlet</servlet-name>
         <url-pattern>/SelectionServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>OrderHistoryServlet</servlet-name>
         <url-pattern>/OrderHistory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountLogin</servlet-name>
+        <url-pattern>/AccountLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
