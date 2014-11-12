@@ -3,14 +3,11 @@
     Created on : Oct 30, 2014, 3:08:11 PM
     Author     : Keith
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page import="java.util.*" %>
 <link rel="stylesheet" href="style/standard.css"/>
 
 
 
-    <%
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        %>
-        
-        <h6 class="copyright">&COPY; <%= year %> DGKE Worldwide Enterprises</h6>
+<jsp:useBean id="date" class="java.util.Date" scope="page" />
+<h6 class="copyright">&COPY; <fmt:formatDate value="${date}" pattern="yyyy" /> DGKE Worldwide Enterprises</h6>
