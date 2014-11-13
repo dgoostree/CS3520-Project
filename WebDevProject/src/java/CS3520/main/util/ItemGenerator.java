@@ -33,12 +33,14 @@ public class ItemGenerator implements Serializable{
                         Monitor aMon = new Monitor(iT, par, hDBrands[i]);
                         list.add(aMon);
                     }   break;
-                default:
+                case "case":
                     String[] caseBrands = {"Cooler Master", "RaidMax", "Rosewill", "Thermaltake"};
                     for(int i = 0; i < 4; i++){
                         Monitor aMon = new Monitor(iT, par, caseBrands[i]);
                         list.add(aMon);
                     }   break;
+                default:
+                    break;
             }
         return list;
     }

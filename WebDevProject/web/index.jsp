@@ -12,77 +12,9 @@
         and Darren Goostree netID: sz5629 email: darrengoostree@gmail.com -->
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CS3520 HW Assignment 3</title>
+        <title>CS3520 HW Assignment 4</title>
         
         <script>
-            function selectionChanged(selection){  //on selection change
-                var label = "";
-                                
-                switch(selection){   //set the text for the label on the parameter
-                    case 1: 
-                        label = "${sessionScope.parameterLabel[0]}";
-                        break;
-                    case 2:
-                        label = "${sessionScope.parameterLabel[1]}";
-                        break;
-                    case 3:
-                        label = "${sessionScope.parameterLabel[2]}";
-                        break;
-                    default:
-                        break;
-                }
-                            
-                
-                document.getElementById("paramName").innerHTML = label;
-                populateParams(selection);
-                return;
-            }
-            
-            function populateParams(selection){   //populates the select box with appropriate values
-               var selectBox = document.getElementById("paramSelect");
-               
-               if(selectBox.length > 1){ //if previously populated
-                   clearSelect(selectBox);//clear the box
-               }
-                
-                var paramNames;
-                var paramValues;
-                switch(selection){ //initialize the data to be filled
-                    case 1:   //monitors
-                        paramNames = ["17 inch", "21 inch", "24 inch", "27 inch"];
-                        paramValues = ["17", "21", "24", "27"];
-                        break;
-                    case 2:
-                        paramNames = ["500GB", "1000GB", "1500GB", "2000GB", "3000GB"];
-                        paramValues = ["500", "1000", "1500", "2000", "3000"];
-                        break;
-                    case 3:
-                        paramNames = ["White", "Black", "Gray"];
-                        paramValues = [ "White", "Black", "Gray"];
-                        break;
-                    default:
-                        break;
-                }
-                            
-                
-                for(i=0; i < paramNames.length; i++){ //for each in the array, add it
-                    var newOption = document.createElement("option");
-                    newOption.text = paramNames[i];
-                    newOption.value = paramValues[i];
-                    selectBox.options.add(newOption);
-                }
-            }
-            
-            function clearSelect(selectBox){ //removes all custom options from the combobox
-                var offset = selectBox.length;
-                offset--;
-                
-                for(offset; offset>0; offset--){
-                    selectBox.remove(offset);
-                }
-                
-            }
-            
             function validate(form) { //ensures both comboboxes are populated 
                 validInput = true;
                 errorField =document.getElementById("itemError");
@@ -123,37 +55,49 @@
         
         <form action="SelectionServlet" method="get" class="clearer">
              <table>
-                
                  <tr>
-                    <td align="right">Item:</td>
-                    <td>
-                
-                        <select name="itemType" id="itemSelect" onchange="if(this.selectedIndex > 0) selectionChanged(this.selectedIndex);">
-                            <option value="">--</option> 
-                           <c:forEach var="prodType" items="${sessionScope.productNames}" varStatus="loop">
-                               <option value="${sessionScope.productValues[loop.count - 1]}">${prodType}</option>
-                           </c:forEach>
-                        </select>
-                    </td>
-                    <td class="error" id="itemError"></td>
-                </tr>
-                <tr>
-                    <td align="right" width="65px" ><span id="paramName"></span></td>
-                    <td>
-                        <select name="param" id="paramSelect">
-                            <option value="">--</option>
-                        </select>
-                    </td>
-                    <td class="error" id="paramError"></td>
-                </tr>
-                <tr>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        <input type="button" value="Search" onclick="validate(this.form);">
-                    </td>
-                </tr>
+                    <td align="left" style="font-weight:bold; text-decoration: underline">Monitors:</td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=mon&param=17">17 Inch</a></td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=mon&param=21">21 Inch</a></td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=mon&param=24">24 Inch</a></td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=mon&param=27">27 Inch</a></td>
+                 </tr>
+                 <tr>
+                    <td align="left" style="font-weight:bold; text-decoration: underline">Hard Drives:</td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=harddrive&param=500">500GB</a></td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=harddrive&param=1000">1000GB</a></td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=harddrive&param=1500">1500GB</a></td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=harddrive&param=2000">2000GB</a></td>
+                 </tr>
+                 <tr>
+                    <td align="left" style="font-weight:bold; text-decoration: underline">Cases:</td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=case&param=Black">Black</a></td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=case&param=White">White</a></td>
+                 </tr>
+                 <tr>
+                     <td class="tab"><a  href="SelectionServlet?itemType=case&param=Red">Red</a></td>
+                 </tr>
+                 
             </table>
             
             
