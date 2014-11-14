@@ -46,14 +46,14 @@
         </script>
         
         <link rel="stylesheet" href="style/standard.css"/>
-        
+        <jsp:include page="/include/header.jsp"/>
     </head>
     <body>
-        <jsp:include page="/include/header.jsp"/>
         
-        <h3>Product search:</h3>
+        <div>
+            <h3>Product search:</h3>
         
-        <form action="SelectionServlet" method="get" class="clearer">
+            <form action="SelectionServlet" method="get" class="clearer">
              <table>
                  <tr>
                     <td align="left" style="font-weight:bold; text-decoration: underline">Monitors:</td>
@@ -96,13 +96,10 @@
                  </tr>
                  <tr>
                      <td class="tab"><a  href="SelectionServlet?itemType=case&param=Red">Red</a></td>
-                 </tr>
-                 
-            </table>
-            
-            
-        </form>
-        
+                 </tr>     
+              </table>
+            </form>
+        </div>
         <jsp:include page="/include/footer.jsp"/>
     </body>
 </html>
