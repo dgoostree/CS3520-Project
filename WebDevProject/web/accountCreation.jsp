@@ -97,23 +97,13 @@
                 }
                 
                 errorField = document.getElementById("mailingError");
-                //need to fix this error 
-                if(!document.getElementByName("sameAddress"))
-                { 
-                    if(form.mailingAddress.value===""){
-                        error = true;
-                        errorField.innerHTML = "*";
-                    }
-                    else {
-                    errorField.innerHTML="";
-                    }
+                if(form.mailingAddress.value===""){
+                    error = true;
+                    errorField.innerHTML = "*";
                 }
-                else{
-                    errorField.innerHTML="";
+                else {
+                errorField.innerHTML="";
                 }
-                
-               
-                
                 if(error === false){
                     form.submit();
                 }
@@ -126,7 +116,7 @@
         <jsp:include page="/include/header.jsp"/>
         
         <h3>Create a new account:</h3>
-        <form action="AccountCreation" method="post">
+        <form action="CreateAccount" method="post">
             <table>
                 <tr>
                     <td>Username</td>
@@ -162,11 +152,6 @@
                     <td class="error" id="billingError"></td>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="checkbox" name="sameAddress" value="reuse" />Use Billing Address?
-                    </td>
-                </tr>
-                <tr>
                     <td>Mailing Address</td>
                     <td><input type="text" name="mailingAddress"></td>
                     <td class="error" id="mailingError"></td>
@@ -179,7 +164,7 @@
                 <tr>
                     <td></td>
                     <td align="right">
-                        <input type="button" value="Login" onclick="validateNewAccount(this.form)">
+                        <input type="button" value="Create" onclick="validateNewAccount(this.form)">
                     </td>
                 </tr>
             </table>
