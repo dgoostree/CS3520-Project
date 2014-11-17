@@ -24,20 +24,20 @@ public class ItemGenerator implements Serializable{
                 case "mon":
                     String[] monBrands = {"ASUS", "LG", "Samsung", "ViewSonic"};
                     for(int i = 0; i < 4; i++){
-                        Monitor aMon = new Monitor(iT, par, monBrands[i]);
-                        list.add(aMon);
+                        Item mon = new Item(iT, par, monBrands[i]);
+                        list.add(mon);
                     }   break;
                 case "harddrive":
                     String[] hDBrands = {"Maxtor", "Seagate", "WD"};
                     for(int i = 0; i < 3; i++){
-                        Monitor aMon = new Monitor(iT, par, hDBrands[i]);
-                        list.add(aMon);
+                        Item hd = new Item(iT, par, hDBrands[i]);
+                        list.add(hd);
                     }   break;
                 case "case":
                     String[] caseBrands = {"Cooler Master", "RaidMax", "Rosewill", "Thermaltake"};
                     for(int i = 0; i < 4; i++){
-                        Monitor aMon = new Monitor(iT, par, caseBrands[i]);
-                        list.add(aMon);
+                        Item cas = new Item(iT, par, caseBrands[i]);
+                        list.add(cas);
                     }   break;
                 default:
                     break;

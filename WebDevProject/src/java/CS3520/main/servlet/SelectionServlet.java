@@ -47,7 +47,7 @@ public class SelectionServlet extends HttpServlet {
             out.println("<h1>"+e.getStackTrace()+"</h1>");
         }
         request.setAttribute("inventory", list);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/orderConfirmation.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/itemsDisplay.jsp");
         dispatcher.forward(request, response);
     }
 
