@@ -48,55 +48,37 @@
         <link rel="stylesheet" href="style/standard.css"/>
         <jsp:include page="/include/header.jsp"/>
     </head>
-    <body>
-        
+    <body>        
         <div>
             <h3>Product search:</h3>
         
             <form action="SelectionServlet" method="get" class="clearer">
              <table>
-                 <tr>
-                    <td align="left" style="font-weight:bold; text-decoration: underline">Monitors:</td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=mon&param=17">17 Inch</a></td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=mon&param=21">21 Inch</a></td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=mon&param=24">24 Inch</a></td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=mon&param=27">27 Inch</a></td>
-                 </tr>
-                 <tr>
-                    <td align="left" style="font-weight:bold; text-decoration: underline">Hard Drives:</td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=harddrive&param=500">500GB</a></td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=harddrive&param=1000">1000GB</a></td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=harddrive&param=1500">1500GB</a></td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=harddrive&param=2000">2000GB</a></td>
-                 </tr>
-                 <tr>
-                    <td align="left" style="font-weight:bold; text-decoration: underline">Cases:</td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=case&param=Black">Black</a></td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=case&param=White">White</a></td>
-                 </tr>
-                 <tr>
-                     <td class="tab"><a  href="SelectionServlet?itemType=case&param=Red">Red</a></td>
-                 </tr>     
+                 
+                 <c:forEach var="type" items="${productNames}" varStatus="outerLoop">
+                     
+                     <tr>
+                         <td class ="productType">
+                            ${type}
+                         </td>
+                     </tr>
+                     
+                     <c:forEach var="params" items="${sessionScope.parameterNames[outerLoop.count - 1]}">
+                         <c:forEach var="paramValue" items="${params}" varStatus="innerLoop">
+                             <tr>
+                                <td class="tab">
+                                    
+                                    <c:url value="SelectionServlet" var="itemSelection">
+                                        <c:param name="itemType" value="${productValues[outerLoop.count - 1]}"/>
+                                        <c:param name="param" value="${parameterValues[outerLoop.count - 1][innerLoop.count - 1]}"/>
+                                    </c:url>
+                                    
+                                    <a class="itemLink" href=" <c:out value="${itemSelection}" />">${paramValue}</a>
+                                </td>
+                             </tr>
+                         </c:forEach>
+                     </c:forEach>
+                 </c:forEach>
               </table>
             </form>
         </div>

@@ -8,7 +8,9 @@ and open the template in the editor.
     Author     : keitheveritt
 */
 
+a.itemLink:visited {color: blue;}
 td.error {font-size: 8pt; font-style: italic; color: Red; text-align: left;}
+td.productType{ font-weight:bold; text-decoration:underline;}
 form.headerForm { float:right; }
 div.loginLink { float:right; width: 12%; height: 100px; }
 div.empty {float:left; width: 33%; height: 100px; }

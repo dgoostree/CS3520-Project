@@ -33,10 +33,13 @@ public class InitializeParameters extends HttpServlet {
             
         HttpSession sess = request.getSession();
         
-        String[] productNames = {"Monitor", "Hard-drive", "Case"};
+        
+        //
+        // Everything here will eventually be replaced with database queries for the information
+        String[] productNames = {"Monitors", "Hard-drives", "Cases"};
         sess.setAttribute("productNames", productNames);
         
-        String[] productValues = {"monitor", "hard-drive", "case"};
+        String[] productValues = {"mon", "harddrive", "case"};
         sess.setAttribute("productValues", productValues);
         
         String[] parameterLabel = { "Size", "Capacity", "Color"};
