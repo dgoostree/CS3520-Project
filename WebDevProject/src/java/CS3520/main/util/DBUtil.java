@@ -5,10 +5,13 @@
  */
 package CS3520.main.util;
 
+import CS3520.main.UserValidation;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -85,19 +88,25 @@ public class DBUtil {
     public static User createNewAccount(String userName, String pass, String 
             firstName, String lastName, String email, String billingAddress,
             String mailingAddress, String phone){
-        int rs;
+        
         User user = null;
         try{
             ConnectionPool cp = ConnectionPool.getInstance();
             Connection connection = cp.getConnection(url, username, password);
-            Statement stmt = connection.createStatement();
-            rs = stmt.executeUpdate("INSERT INTO * user_account (username, "
+            String preparedQuery = "INSERT INTO user_account(username, "
                     + "password, firstname, lastname, email, billing_address, "
-                    + "mailing_address, phone)VALUES('" + userName + "', '" + 
-                    pass + "', '" + firstName + "', '" + lastName + "', '" +
-                    email + "', '" + billingAddress + "', '" + mailingAddress+ 
-                    "', '" + phone + "')");
-            if(rs==1){//creates user object from database result set and returns the user object
+                    + "mailing_address, phone)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = connection.prepareStatement(preparedQuery);
+            stmt.setString(1, userName);
+            stmt.setString(2, pass);
+            stmt.setString(3, firstName);
+            stmt.setString(4, lastName);
+            stmt.setString(5, email);
+            stmt.setString(6, billingAddress);
+            stmt.setString(7, mailingAddress);
+            stmt.setString(8, phone);
+            stmt.executeUpdate();
+            //creates user object from database result set and returns the user object
                 user = new User();
                 user.setUserName(userName);
                 user.setPassword(pass);
@@ -107,12 +116,31 @@ public class DBUtil {
                 user.setBillingAddress(billingAddress);
                 user.setMailingAddress(mailingAddress);
                 user.setPhone(phone);
-            }
         }
         catch(Exception e){
             e.printStackTrace();
             System.err.println(e.getMessage());
         }
         return user;
+    }
+
+    public static boolean existsAndDelete(String delName, HttpServletRequest request) {
+            boolean deleted = false;
+        try{
+            ConnectionPool cp = ConnectionPool.getInstance();
+            Connection connection = cp.getConnection(url,username,password);
+            String preparedQuery = "DELETE FROM user_account " + "WHERE username = ?";
+            PreparedStatement ps = connection.prepareStatement(preparedQuery);
+            ps.setString(1, delName);
+            int x = ps.executeUpdate();
+            if(x==1){
+                deleted = true;
+                request.getSession().removeAttribute("loggedIn");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+        return deleted;
     }
 }

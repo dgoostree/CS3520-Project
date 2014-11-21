@@ -11,6 +11,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order History</title>
+        <script>
+            function confirmDelete(form){
+                var r = confirm("Are you sure you want to delete your account?");
+                if(r === true){
+                    form.submit();
+                }
+                else{
+                    
+                }
+            }
+        </script>
     </head>
     <body>        
         <jsp:include page="/include/header.jsp"/>
@@ -25,11 +36,28 @@
                 </tr>
             </c:forEach>
         </table>
-
-        <form action="index.jsp" method="post">
-            <input type="Submit" value="Back"/>
-        </form>
-        
+        <table>
+            <tr>
+                <td>
+                    <form action="index.jsp" method="post">
+                    <input type="Submit" value="Back"/>
+                    </form>
+                </td>
+                <td>
+                    <h5><u>Account Management:</u></h5>
+                </td>
+                <td>
+                    <form action="index.jsp" method="post">
+                    <input type="Submit" value="Update"/>
+                    </form>
+                </td>
+                <td>
+                    <form action="DeleteAccount" method="post">
+                        <input type="button" value="Delete" onclick="confirmDelete(this.form)"/>
+                    </form>
+                </td>
+            </tr>
+        </table>
         <jsp:include page="/include/footer.jsp"/>
     </body>
 </html>
