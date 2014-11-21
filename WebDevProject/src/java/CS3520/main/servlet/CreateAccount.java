@@ -5,6 +5,8 @@
  */
 package CS3520.main.servlet;
 
+import CS3520.main.UserValidation;
+import CS3520.main.util.DBUtil;
 import CS3520.main.util.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,12 +34,29 @@ public class CreateAccount extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sessionID = request.getSession();
-        String url = "/new_Account_Confirmation.jsp";
-        User user = new User(request.getParameter("userName"), request.getParameter("password"), request.getParameter("firstName"),
-                request.getParameter("lastName"), request.getParameter("email"), request.getParameter("billingAddress"), 
-                request.getParameter("mailingAddress"), request.getParameter("phone"));
-        sessionID.setAttribute("newUser", user);  
-        getServletContext().getRequestDispatcher(url).forward(request, response);
+        String url = "/";
+        User user = new User();
+        
+        if(UserValidation.isNew(request.getParameter("userName"),request)){
+            user = DBUtil.createNewAccount(request.getParameter(
+                    "userName"), request.getParameter("password"), 
+                    request.getParameter("firstName"), request.getParameter(
+                    "lastName"), request.getParameter("email"), 
+                    request.getParameter("billingAddress"), request.getParameter(
+                    "mailingAddress"), request.getParameter("phone"));
+            request.removeAttribute("errMsg");
+            url = "/new_Account_Confirmation.jsp";
+            sessionID.setAttribute("newUser", user);  
+           
+        }
+        else{
+            url = "/accountCreation.jsp";
+            request.setAttribute("errMsg", "Account with that username already exists, try again.");
+        }
+         getServletContext().getRequestDispatcher(url).forward(request, 
+                    response);
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

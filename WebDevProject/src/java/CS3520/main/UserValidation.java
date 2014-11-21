@@ -15,21 +15,23 @@ import javax.servlet.http.HttpSession;
  * @author Keith
  */
 public class UserValidation {
+    static boolean status = false;
     public static boolean isValid(String username, String password, HttpServletRequest request){
-       boolean status = false;
+       
        User account = DBUtil.validateLogin(username, password);
        if(account!=null){
            status = true;
            request.getSession().setAttribute("user", account);
-           //otherwise it's false, so we've come from the login form, so log in
             boolean loggedIn = true; 
             HttpSession sess = request.getSession();
             sess.setAttribute("loggedIn", loggedIn);
             
             String userName = (String)request.getParameter("userName");
             sess.setAttribute("userName", userName );
-        
        }
         return status;
+    }
+    public static boolean isNew(String username, HttpServletRequest request){
+        return DBUtil.checkUnique(username); 
     }
 }

@@ -61,4 +61,58 @@ public class DBUtil {
         }
         return user;
     }
+    
+    public static boolean checkUnique(String aname){
+        boolean reply = false;
+        ResultSet rs = null;
+        try{
+            ConnectionPool uc = ConnectionPool.getInstance();
+            Connection uconnect = uc.getConnection(url, username, password);
+            Statement ustate = uconnect.createStatement();
+            rs = ustate.executeQuery("Select * from user_account where username = '" 
+                + aname + "'");
+            if(!rs.next()){
+                reply = true;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+        return reply;
+    }
+    
+    public static User createNewAccount(String userName, String pass, String 
+            firstName, String lastName, String email, String billingAddress,
+            String mailingAddress, String phone){
+        int rs;
+        User user = null;
+        try{
+            ConnectionPool cp = ConnectionPool.getInstance();
+            Connection connection = cp.getConnection(url, username, password);
+            Statement stmt = connection.createStatement();
+            rs = stmt.executeUpdate("INSERT INTO * user_account (username, "
+                    + "password, firstname, lastname, email, billing_address, "
+                    + "mailing_address, phone)VALUES('" + userName + "', '" + 
+                    pass + "', '" + firstName + "', '" + lastName + "', '" +
+                    email + "', '" + billingAddress + "', '" + mailingAddress+ 
+                    "', '" + phone + "')");
+            if(rs==1){//creates user object from database result set and returns the user object
+                user = new User();
+                user.setUserName(userName);
+                user.setPassword(pass);
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setEmail(email);
+                user.setBillingAddress(billingAddress);
+                user.setMailingAddress(mailingAddress);
+                user.setPhone(phone);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+        return user;
+    }
 }

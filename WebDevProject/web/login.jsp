@@ -67,7 +67,7 @@
                     <td class="error" id="loginPasswordError"></td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" >
                         <span class="error">
                             <c:if test="${requestScope.errMsg != null}">
                                 ${requestScope.errMsg}

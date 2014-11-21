@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Account Creation</title>
     <script>
-            function validateNewAccount(form) {
+            function confirmCompleted(form) {
                 error = false;
                 
                 /**
@@ -119,6 +119,15 @@
         <form action="CreateAccount" method="post">
             <table>
                 <tr>
+                    <td colspan="2">
+                        <span class="error">
+                            <c:if test="${requestScope.errMsg != null}">
+                                ${requestScope.errMsg}
+                            </c:if>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
                     <td>Username</td>
                     <td><input type="text" name="userName"></td>
                     <td class="error" id="loginNameError"></td>
@@ -164,7 +173,7 @@
                 <tr>
                     <td></td>
                     <td align="right">
-                        <input type="button" value="Create" onclick="validateNewAccount(this.form)">
+                        <input type="button" value="Create" onclick="confirmCompleted(this.form)">
                     </td>
                 </tr>
             </table>
