@@ -11,13 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import CS3520.main.UserValidation;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
- * @author Darren
+ * @author Keith
  */
-public class InitializeParameters extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,42 +31,20 @@ public class InitializeParameters extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-        HttpSession sess = request.getSession();
+        String username = request.getParameter("userName");
+        String password = request.getParameter("password");
+        String url = "/";
         
+        if(UserValidation.isValid(username, password, request)){
+            url = "/index.jsp";
+            request.removeAttribute("errMsg");
+        }
+        else{
+            url = "/login.jsp";
+            request.setAttribute("errMsg", "Username/Password combination invalid");
+        }
         
-        //
-        // Everything here will eventually be replaced with database queries for the information
-        String[] productNames = {"Monitors", "Hard-drives", "Cases", "Memory"};
-        sess.setAttribute("productNames", productNames);
-        
-        String[] productValues = {"mon", "harddrive", "case", "memory"};
-        sess.setAttribute("productValues", productValues);
-        
-        String[] parameterLabel = { "Size", "Capacity", "Color", "Capacity"};
-        sess.setAttribute("parameterLabel", parameterLabel);
-        
-        String[] icons = {"images/monIcon.jpg", "images/hdIcon.jpg", "images/caseIcon.jpg", "images/memIcon.jpg"};
-        sess.setAttribute("icons", icons);
-        
-        
-        String[][] parameterNames = new String[][]{ {"17 inch", "21 inch", "24 inch", "27 inch"},
-                {"500GB", "1TB", "2TB", "3TB"},
-                {"White", "Black", "Gunmetal", "Red"},
-                {"4GB", "8GB", "16GB", "32GB"}};
-        sess.setAttribute("parameterNames", parameterNames);
-        
-        String[][] parameterValues = new String[][] {
-            {"17", "21", "24", "27"},
-            {"500", "1", "2", "3"},
-            {"White", "Black", "Gunmetal", "Red"},
-            {"4","8","16","32"}
-        };
-        sess.setAttribute("parameterValues", parameterValues);
-        
-        
-        
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);        
+        getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -29,6 +29,17 @@ public class User implements Serializable{
         this.mailingAddress = mailingAddress;
         this.phone = phone;
     }
+    
+    public User(){
+        this.userName = "";
+        this.password = "";
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.billingAddress = "";
+        this.mailingAddress = "";
+        this.phone = "";
+    }
 
     public String getUserName() {
         return userName;
@@ -93,8 +104,5 @@ public class User implements Serializable{
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    
-    
-    
     
 }

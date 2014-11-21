@@ -54,12 +54,14 @@
         
             <form action="SelectionServlet" method="get" class="clearer">
              <table>
-                 
-                 <c:forEach var="type" items="${productNames}" varStatus="outerLoop">
-                     
+                 <c:forEach var="type" items="${productNames}" varStatus="outerLoop">  
                      <tr>
                          <td class ="productType">
                             ${type}
+                         </td>
+                         <td>
+                             <%--Cannot get this to populate the images from the icons list in InitializeParameters --%>
+                             <image class="logo" source="${sessionScope.icons[outerLoop.index]}">
                          </td>
                      </tr>
                      

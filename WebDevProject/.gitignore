@@ -9,3 +9,4 @@ nbdist/
 nbactions.xml
 nb-configuration.xml ###nbproject
 /project.properties
+WebDevProject/nbproject/project.properties

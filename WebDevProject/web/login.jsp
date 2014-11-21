@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,7 +23,7 @@
                 
                 if(form.userName.value===""){
                     error = true;
-                    errorField.innerHTML = "*";
+                    errorField.innerHTML = "* username must contain 1 or more characters";
                 }
                 else {
                     errorField.innerHTML = "";
@@ -35,7 +36,7 @@
                 errorField = document.getElementById("loginPasswordError");
                 if(form.password.value===""){
                     error = true;
-                    errorField.innerHTML = "*";
+                    errorField.innerHTML = "* password must contain 1 or more characters";
                 }
                 else {
                     errorField.innerHTML="";
@@ -53,7 +54,7 @@
         <jsp:include page="/include/header.jsp"/>
         
         <h3>Account log in:</h3>
-        <form action="AccountLogin" method="post">
+        <form action="LoginServlet" method="post">
             <table>
                 <tr>
                     <td>Username</td>
@@ -64,6 +65,15 @@
                     <td>Password</td>
                     <td><input type="password" name="password"></td>
                     <td class="error" id="loginPasswordError"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span class="error">
+                            <c:if test="${requestScope.errMsg != null}">
+                                ${requestScope.errMsg}
+                            </c:if>
+                        </span>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>

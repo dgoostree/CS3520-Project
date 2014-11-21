@@ -38,23 +38,17 @@ public class AccountLogin extends HttpServlet {
         
         HttpSession sess = request.getSession();
         Boolean loginStatus = (Boolean) sess.getAttribute("loggedIn");
-        String url = "/index.jsp";
+        String url = "/login.jsp";
         
         if(loginStatus == null){  //if the attribute doesnt exist in session, we aren't logged in
             loggedIn = false;  
-            sess.setAttribute("loggedIn", loggedIn);  //add the attribut set to false
+            sess.setAttribute("loggedIn", loggedIn);  //add the attribute set to false
             url = "/login.jsp"; 
         }
         else if(loginStatus == true) {  //if already logged in, log out
             sess.removeAttribute("loggedIn");  //remove it from the object, so it comes in null
         }
-        else { //otherwise it's false, so we've come from the login form, so log in
-            loggedIn = true; 
-            sess.setAttribute("loggedIn", loggedIn);
-            
-            String userName = (String)request.getParameter("userName");
-            sess.setAttribute("userName", userName );
-        }
+        
         
         getServletContext().getRequestDispatcher(url).forward(request, response);   //forward to login page
     }
