@@ -5,8 +5,8 @@
  */
 package CS3520.main.servlet;
 
-import CS3520.main.UserValidation;
 import CS3520.main.util.DBUtil;
+import CS3520.main.util.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,31 +18,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Keith
  */
-public class DeleteAccount extends HttpServlet {
+public class ModifyAccount extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "/";
-        System.err.println("Entered Delete Servlet");
-        if(DBUtil.existsAndDelete((String) request.getSession().getAttribute("userName"),request)){
-            request.removeAttribute("errMsg");
-            url = "/index.jsp";
+        String uname = request.getParameter("userName");
+        String pass = request.getParameter("password");
+        String mod = request.getParameter("mod");
+        System.err.println("Entered modify servlet");
+        if(mod.equals("modify")){
+            DBUtil.modifyUser(uname, request);
+            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
         else{
-            url = "/accountCreation.jsp";
-            request.setAttribute("errMsg", "Account with that username does not exist.");
+            User user = DBUtil.validateLogin(uname, pass);
+            request.setAttribute("currentUser", user);
         }
-         getServletContext().getRequestDispatcher(url).include(request, 
-                    response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

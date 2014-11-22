@@ -12,13 +12,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order History</title>
         <script>
-            function confirmDelete(form){
-                var r = confirm("Are you sure you want to delete your account?");
-                if(r === true){
-                    form.submit();
+            function deleteModify(form, det){
+                if(det === 1){
+                    var r = confirm("Are you sure you want to delete your account?");
+                    if(r === true){
+                       form.submit();
+                    }
+                    else{
+                        
+                    }
                 }
-                else{
-                    
+                else if(det === 0){
+                    request.setAttribute("mod", "modify");
+                    form.submit();
                 }
             }
         </script>
@@ -39,21 +45,22 @@
         <table>
             <tr>
                 <td>
-                    <form action="index.jsp" method="post">
-                    <input type="Submit" value="Back"/>
+                    <h4><u>Account Management:</u></h4>
+                </td>
+                <td>
+                    <form action="ModifyAccount" method="post" >
+                    <input type="button" value="Update" onclick="deleteModify(this.form, 0)"/>
                     </form>
                 </td>
                 <td>
-                    <h5><u>Account Management:</u></h5>
-                </td>
-                <td>
-                    <form action="index.jsp" method="post">
-                    <input type="Submit" value="Update"/>
+                    <form action="DeleteAccount" method="post" >
+                        <input type="button" value="Delete" onclick="deleteModify(this.form, 1)"/>
                     </form>
                 </td>
+            </tr>
+            <tr>
                 <td>
-                    <form action="DeleteAccount" method="post">
-                        <input type="button" value="Delete" onclick="confirmDelete(this.form)"/>
+                    <a href="/index.jsp">Back</a>
                     </form>
                 </td>
             </tr>

@@ -28,6 +28,10 @@
         <servlet-name>DeleteAccount</servlet-name>
         <servlet-class>CS3520.main.servlet.DeleteAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModifyAccount</servlet-name>
+        <servlet-class>CS3520.main.servlet.ModifyAccount</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SelectionServlet</servlet-name>
         <url-pattern>/SelectionServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>DeleteAccount</servlet-name>
         <url-pattern>/DeleteAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyAccount</servlet-name>
+        <url-pattern>/ModifyAccount</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : accountCreation
-    Created on : Nov 13, 2014, 10:48:34 PM
+    Document   : modifyAccount
+    Created on : Nov 21, 2014, 6:10:17 PM
     Author     : Keith
 --%>
 
@@ -9,28 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Account Creation</title>
+        <title>Account Modification</title>
     <script>
             function confirmCompleted(form) {
                 error = false;
-                
-                /**
-                 * error check username
-                 */
-                errorField = document.getElementById("loginNameError");
-                
-                if(form.userName.value===""){
-                    error = true;
-                    errorField.innerHTML = "* Field cannot be blank";
-                }
-                else {
-                    errorField.innerHTML = "";
-                }
-                
-                
-                /**
-                 * error check password
-                 */
                 errorField = document.getElementById("loginPasswordError");
                 if(form.password.value===""){
                     error = true;
@@ -38,6 +20,7 @@
                 }
                 else {
                     errorField.innerHTML="";
+                    request.setAttribute()
                 }
                 
                 errorField = document.getElementById("confirmPasswordError");
@@ -86,6 +69,7 @@
                 else {
                     errorField.innerHTML="";
                 } 
+                request.setAttribute("mod", "");
                 if(error === false){
                     form.submit();
                 }
@@ -98,7 +82,7 @@
         <jsp:include page="/include/header.jsp"/>
         
         <h3>Create a new account:</h3>
-        <form action="CreateAccount" method="post">
+        <form action="ModifyAccount" method="post">
             <table>
                 <tr>
                     <td colspan="2">
@@ -111,43 +95,43 @@
                 </tr>
                 <tr>
                     <td>Username</td>
-                    <td><input type="text" name="userName"></td>
+                    <td><input type="text" name="userName" value="${requestScope.currentUser.userName}" disabled="disabled"></td>
                     <td class="error" id="loginNameError"></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="password"></td>
+                    <td><input type="password" name="password" value="${requestScope.currentUser.password}"></td>
                     <td class="error" id="loginPasswordError"></td>
-                
+    
                     <td>Confirm Password</td>
-                    <td><input type="password" name="passwordCheck"></td>
+                    <td><input type="password" name="passwordCheck" value="${requestScope.currentUser.password}"></td>
                     <td class="error" id="confirmPasswordError"></td>
                 </tr>
                 <tr>
                     <td>First Name</td>
-                    <td><input type="text" name="firstName"></td>
+                    <td><input type="text" name="firstName" value="${requestScope.currentUser.firstName}"></td>
                     <td class="error" id="firstNameError"></td>
                     <td>Last Name</td>
-                    <td><input type="text" name="lastName"></td>
+                    <td><input type="text" name="lastName" value="${requestScope.currentUser.lastName}"></td>
                     <td class="error" id="lastNameError"></td>
                 </tr>
                 <tr>
                     <td>Email Address</td>
-                    <td><input type="text" name="email"></td>
+                    <td><input type="text" name="email" value="${requestScope.currentUser.email}"></td>
                     <td class="error" id="emailError"></td>
                 </tr>
                 <tr>
                     <td>Billing Address</td>
-                    <td><input type="text" name="billingAddress"></td>
+                    <td><input type="text" name="billingAddress" value="${requestScope.currentUser.billingAddress}"></td>
                     <td class="error" id="billingError"></td>
-                
+                    
                     <td>Mailing Address</td>
-                    <td><input type="text" name="mailingAddress"></td>
+                    <td><input type="text" name="mailingAddress" value="${requestScope.currentUser.mailingAdress}"></td>
                     <td class="error" id="mailingError"></td>
                 </tr>
                 <tr>
                     <td>Phone Number</td>
-                    <td><input type="text" name="phone"></td>
+                    <td><input type="text" name="phone" value="${requestScope.currentUser.phone}"></td>
                     <td class="error" id="phoneError"></td>
                 </tr>
                 <tr>
@@ -157,9 +141,7 @@
                 </tr>
             </table>
         </form>
-        
-        
         <jsp:include page="/include/footer.jsp"/>
-        
     </body>
 </html>
+
