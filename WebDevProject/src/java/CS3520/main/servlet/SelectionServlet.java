@@ -41,10 +41,12 @@ public class SelectionServlet extends HttpServlet {
         
         
         try {
+            
             list = ItemGenerator.getItemList(iT, par);
         }
         catch(Exception e){
-            out.println("<h1>"+e.getStackTrace()+"</h1>");
+           e.printStackTrace();
+           System.err.println(e.getMessage());
         }
         request.setAttribute("inventory", list);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/itemsDisplay.jsp");

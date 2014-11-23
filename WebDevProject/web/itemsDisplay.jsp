@@ -18,20 +18,20 @@
         <h3 class="listStart">Here are the ${param.itemType}s we have in stock:</h3>
         
         <table>
-            <c:forEach var="monitor" items="${inventory}"> 
+            <c:forEach var="item" items="${inventory}"> 
                 
                 <tr>
                     <td width="100px">
                         <%--<%= itemList.get(i).getName() %>--%>
-                        ${monitor.name}
+                        ${item.name}
                     </td>
                     <td width="100px">                                
                         <%--<%= itemList.get(i).getParam() + modifier %>--%>
-                        ${monitor.paramToString}
+                        ${item.paramToString}
                     </td>
                     <td width="100px">
                         <%--<%= type %>--%>
-                        ${monitor.type}
+                        ${item.type}
                     </td>              
                 </tr>
 
