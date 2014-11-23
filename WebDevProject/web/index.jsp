@@ -60,8 +60,10 @@
                             ${type}
                          </td>
                          <td>
+                          
                              <%--Cannot get this to populate the images from the icons list in InitializeParameters --%>
-                             <image class="logo" source="${sessionScope.icons[outerLoop.index]}">
+                                <img  src="${pageContext.request.contextPath}${sessionScope.icons[outerLoop.count-1]}" alt="something">
+                             
                          </td>
                      </tr>
                      

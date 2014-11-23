@@ -45,7 +45,7 @@ public class InitializeParameters extends HttpServlet {
         String[] parameterLabel = { "Size", "Capacity", "Color", "Capacity"};
         sess.setAttribute("parameterLabel", parameterLabel);
         
-        String[] icons = {"images/monIcon.jpg", "images/hdIcon.jpg", "images/caseIcon.jpg", "images/memIcon.jpg"};
+        String[] icons = {"/images/monIcon.jpg", "/images/hdIcon.jpg", "/images/caseIcon.jpg", "/images/memIcon.jpg"};
         sess.setAttribute("icons", icons);
         
         
