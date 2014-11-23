@@ -20,7 +20,6 @@
                 }
                 else {
                     errorField.innerHTML="";
-                    request.setAttribute()
                 }
                 
                 errorField = document.getElementById("confirmPasswordError");
@@ -69,7 +68,6 @@
                 else {
                     errorField.innerHTML="";
                 } 
-                request.setAttribute("mod", "");
                 if(error === false){
                     form.submit();
                 }
@@ -126,12 +124,12 @@
                     <td class="error" id="billingError"></td>
                     
                     <td>Mailing Address</td>
-                    <td><input type="text" name="mailingAddress" ></td>
+                    <td><input type="text" name="mailingAddress" value="${sessionScope.user.mailingAddress}"></td>
                     <td class="error" id="mailingError"></td>
                 </tr>
                 <tr>
                     <td>Phone Number</td>
-                    <td><input type="text" name="phone" ></td>
+                    <td><input type="text" name="phone" value="${sessionScope.user.phone}"></td>
                     <td class="error" id="phoneError"></td>
                 </tr>
                 <tr>

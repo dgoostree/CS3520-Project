@@ -32,7 +32,6 @@ public class DeleteAccount extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = "/";
-        System.err.println("Entered Delete Servlet");
         if(DBUtil.existsAndDelete((String) request.getSession().getAttribute("userName"),request)){
             request.removeAttribute("errMsg");
             url = "/index.jsp";

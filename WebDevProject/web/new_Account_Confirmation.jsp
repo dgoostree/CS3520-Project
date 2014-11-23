@@ -64,11 +64,6 @@
                             <input type="submit" name="confirm" value="Confirm">
                         </form>
                     </td>
-                    <%--<td> 
-                        <form action="accountCreation.jsp" method="post">
-                            <input type="submit" name="fix" value="Change Something">
-                        </form>
-                    </td> --%>
                 </tr>
             </table>
         </div>

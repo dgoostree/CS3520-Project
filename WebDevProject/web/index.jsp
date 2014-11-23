@@ -56,15 +56,12 @@
              <table>
                  <c:forEach var="type" items="${productNames}" varStatus="outerLoop">  
                      <tr>
-                         <td class ="productType">
+                        <td class ="productType">
                             ${type}
-                         </td>
-                         <td>
-                          
-                             <%--Cannot get this to populate the images from the icons list in InitializeParameters --%>
-                                <img  src="${pageContext.request.contextPath}${sessionScope.icons[outerLoop.count-1]}" alt="something">
-                             
-                         </td>
+                        </td>
+                        <td>
+                            <img  src="${pageContext.request.contextPath}${sessionScope.icons[outerLoop.count-1]}" alt="something">
+                        </td>
                      </tr>
                      
                      <c:forEach var="params" items="${sessionScope.parameterNames[outerLoop.count - 1]}">

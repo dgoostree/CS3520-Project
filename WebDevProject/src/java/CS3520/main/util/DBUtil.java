@@ -144,23 +144,25 @@ public class DBUtil {
         return deleted;
     }
 
-    public static void modifyUser(String uname, HttpServletRequest request) {
+    public static void modifyUser(String un, String pw, String fn, String ln, String em, 
+            String ba, String ma,String ph, HttpServletRequest request) {
         
         try{
+           
             ConnectionPool cp = ConnectionPool.getInstance();
             Connection connect = cp.getConnection(url, username, password);
             String preparedSQL = "UPDATE user_account SET password = ?, "
                     + "firstName = ?, lastName = ?, email = ?, billing_address "
                     + "= ?, mailing_address = ?, phone = ? WHERE username = ?";
             PreparedStatement ps = connect.prepareStatement(preparedSQL);
-            ps.setString(1, (String)request.getAttribute("password"));
-            ps.setString(2, (String)request.getAttribute("firstName"));
-            ps.setString(3, (String)request.getAttribute("lastName"));
-            ps.setString(4, (String)request.getAttribute("email"));
-            ps.setString(5, (String)request.getAttribute("billingAddress"));
-            ps.setString(6, (String)request.getAttribute("mailingAddress"));
-            ps.setString(7, (String)request.getAttribute("phone"));
-            ps.setString(8, (String)request.getAttribute("userName"));
+            ps.setString(1, pw);
+            ps.setString(2, fn);
+            ps.setString(3, ln);
+            ps.setString(4, em);
+            ps.setString(5, ba);
+            ps.setString(6, ma);
+            ps.setString(7, ph);
+            ps.setString(8, un);
             ps.executeUpdate();
         }
         catch(Exception e){

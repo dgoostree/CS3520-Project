@@ -20,15 +20,13 @@ import javax.servlet.http.HttpServletResponse;
 public class ModifyAccount extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        //String uname = request.getParameter("userName");
-        System.err.println("Entered modify servlet");
-        //User user = DBUtil.validateLogin(uname, request.getParameter("password"));
-        //request.setAttribute("currentUser", user);
-        DBUtil.modifyUser(request.getParameter("userName"), request);
+            throws ServletException, IOException {     
+        DBUtil.modifyUser((String)request.getSession().getAttribute("userName"), request.getParameter("password"), request.getParameter("firstName"),
+                request.getParameter("lastName"), request.getParameter("email"), request.getParameter("billingAddress"), request.getParameter("mailingAddress"),
+                request.getParameter("phone"), request);
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
