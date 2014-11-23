@@ -21,13 +21,12 @@ public class UserValidation {
        User account = DBUtil.validateLogin(username, password);
        if(account!=null){
            status = true;
-           request.getSession().setAttribute("user", account);
-            boolean loggedIn = true; 
-            HttpSession sess = request.getSession();
-            sess.setAttribute("loggedIn", loggedIn);
-            
-            String userName = (String)request.getParameter("userName");
-            sess.setAttribute("userName", userName );
+           HttpSession sess = request.getSession();
+           sess.setAttribute("user", account);
+           boolean loggedIn = true; 
+           sess.setAttribute("loggedIn", loggedIn);
+           String userName = (String)request.getParameter("userName");
+           sess.setAttribute("userName", userName );
        }
         return status;
     }

@@ -12,20 +12,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order History</title>
         <script>
-            function deleteModify(form, det){
-                if(det === 1){
+            function deleteAccount(form){
                     var r = confirm("Are you sure you want to delete your account?");
                     if(r === true){
                        form.submit();
                     }
-                    else{
-                        
-                    }
-                }
-                else if(det === 0){
-                    request.setAttribute("mod", "modify");
-                    form.submit();
-                }
             }
         </script>
     </head>
@@ -48,13 +39,11 @@
                     <h4><u>Account Management:</u></h4>
                 </td>
                 <td>
-                    <form action="ModifyAccount" method="post" >
-                    <input type="button" value="Update" onclick="deleteModify(this.form, 0)"/>
-                    </form>
+                    <a href="${pageContext.request.contextPath}/modAcct.jsp"><button type="button">Update</button></a>
                 </td>
                 <td>
                     <form action="DeleteAccount" method="post" >
-                        <input type="button" value="Delete" onclick="deleteModify(this.form, 1)"/>
+                        <input type="button" value="Delete" onclick="deleteAccount(this.form)"/>
                     </form>
                 </td>
             </tr>

@@ -8,7 +8,6 @@ package CS3520.main.servlet;
 import CS3520.main.util.DBUtil;
 import CS3520.main.util.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,20 +21,13 @@ public class ModifyAccount extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String uname = request.getParameter("userName");
-        String pass = request.getParameter("password");
-        String mod = request.getParameter("mod");
+        //String uname = request.getParameter("userName");
         System.err.println("Entered modify servlet");
-        if(mod.equals("modify")){
-            DBUtil.modifyUser(uname, request);
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        //User user = DBUtil.validateLogin(uname, request.getParameter("password"));
+        //request.setAttribute("currentUser", user);
+        DBUtil.modifyUser(request.getParameter("userName"), request);
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
-        else{
-            User user = DBUtil.validateLogin(uname, pass);
-            request.setAttribute("currentUser", user);
-        }
-        
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -47,11 +39,11 @@ public class ModifyAccount extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *

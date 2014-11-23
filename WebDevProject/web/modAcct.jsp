@@ -95,48 +95,48 @@
                 </tr>
                 <tr>
                     <td>Username</td>
-                    <td><input type="text" name="userName" value="${requestScope.currentUser.userName}" disabled="disabled"></td>
+                    <td><input type="text" name="userName" value="${sessionScope.user.userName}" disabled="disabled"></td>
                     <td class="error" id="loginNameError"></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="password" value="${requestScope.currentUser.password}"></td>
+                    <td><input type="password" name="password" value="${sessionScope.user.password}"></td>
                     <td class="error" id="loginPasswordError"></td>
     
                     <td>Confirm Password</td>
-                    <td><input type="password" name="passwordCheck" value="${requestScope.currentUser.password}"></td>
+                    <td><input type="password" name="passwordCheck" value="${sessionScope.user.password}"></td>
                     <td class="error" id="confirmPasswordError"></td>
                 </tr>
                 <tr>
                     <td>First Name</td>
-                    <td><input type="text" name="firstName" value="${requestScope.currentUser.firstName}"></td>
+                    <td><input type="text" name="firstName" value="${sessionScope.user.firstName}"></td>
                     <td class="error" id="firstNameError"></td>
                     <td>Last Name</td>
-                    <td><input type="text" name="lastName" value="${requestScope.currentUser.lastName}"></td>
+                    <td><input type="text" name="lastName" value="${sessionScope.user.lastName}"></td>
                     <td class="error" id="lastNameError"></td>
                 </tr>
                 <tr>
                     <td>Email Address</td>
-                    <td><input type="text" name="email" value="${requestScope.currentUser.email}"></td>
+                    <td><input type="text" name="email" value="${sessionScope.user.email}"></td>
                     <td class="error" id="emailError"></td>
                 </tr>
                 <tr>
                     <td>Billing Address</td>
-                    <td><input type="text" name="billingAddress" value="${requestScope.currentUser.billingAddress}"></td>
+                    <td><input type="text" name="billingAddress" value="${sessionScope.user.billingAddress}"></td>
                     <td class="error" id="billingError"></td>
                     
                     <td>Mailing Address</td>
-                    <td><input type="text" name="mailingAddress" value="${requestScope.currentUser.mailingAdress}"></td>
+                    <td><input type="text" name="mailingAddress" ></td>
                     <td class="error" id="mailingError"></td>
                 </tr>
                 <tr>
                     <td>Phone Number</td>
-                    <td><input type="text" name="phone" value="${requestScope.currentUser.phone}"></td>
+                    <td><input type="text" name="phone" ></td>
                     <td class="error" id="phoneError"></td>
                 </tr>
                 <tr>
                     <td align="left">
-                        <input type="button" value="Create" onclick="confirmCompleted(this.form)">
+                        <input type="button" value="Update" onclick="confirmCompleted(this.form)">
                     </td>
                 </tr>
             </table>
