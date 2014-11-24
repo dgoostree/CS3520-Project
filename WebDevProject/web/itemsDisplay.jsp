@@ -18,27 +18,39 @@
         <h3 class="listStart">Here are the ${param.itemType}s we have in stock:</h3>
         
         <table>
+            <tr>
+                <th>Item Number</th>
+                <th>Image</th>
+                <th>Brand</th>
+                <th>Parameter</th>
+                <th>Price</th>
+            </tr>
             <c:forEach var="item" items="${inventory}"> 
                 
                 <tr>
-                    <td width="150px">
+                    <td cellspacing="5">
+                        ${item.item_number}
+                    </td>
+                    <td>
+                        <img src="${pageContext.request.contextPath}${item.image}" alt="Should be a pic here">
+                    </td>
+                    <td cellspacing="5">
                         <%--<%= itemList.get(i).getName() %>--%>
                         ${item.brand}
                     </td>
-                    <td width="100px">                                
+                    <td cellspacing="5">                                
                         <%--<%= itemList.get(i).getParam() + modifier %>--%>
                         ${item.paramToString}
                     </td>
-                    <td width="100px">
-                        <%--<%= type %>--%>
-                        ${item.itemType}
-                    </td>              
+                    <td cellspacing="5">
+                        ${item.price}
+                    </td>
                 </tr>
 
             </c:forEach>
         </table>
         <br>
-        <form action="index.jsp" method="post">
+        <form action="ClearServlet" method="post">
             <input type="Submit" value="New search"/>
         </form>
 
