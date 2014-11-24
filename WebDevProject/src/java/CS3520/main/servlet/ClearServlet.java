@@ -5,9 +5,9 @@
  */
 package CS3520.main.servlet;
 
-import CS3520.main.util.ItemListGenerator;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,19 +15,24 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Darren
+ * @author Keith
  */
-public class OrderHistoryServlet extends HttpServlet {
+public class ClearServlet extends HttpServlet {
 
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        //Forward to order history
-       
-        request.setAttribute("loopCount", ItemListGenerator.getOrderHistoryCount());  //convert to integer and add to request object
-        getServletContext().getRequestDispatcher("/orderHistory.jsp").forward(request, response);
-        
+        request.removeAttribute("inventory");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

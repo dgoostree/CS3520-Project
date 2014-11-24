@@ -22,13 +22,14 @@ public class DBUtil {
     public static final String password = "admin";
     public static final String url = "jdbc:mysql://localhost:3306/web_dev_project";
     
-    public static ResultSet getUserAccounts(){
+    public static ResultSet getItems(String iT, String par){
         ResultSet rs = null;
         try{
             ConnectionPool cp = ConnectionPool.getInstance();
             Connection connection = cp.getConnection(url,username,password);
             Statement stmt = connection.createStatement();
-            rs=stmt.executeQuery("Select * from user_account");
+            rs=stmt.executeQuery("Select * from items where type = '" + iT + "' "
+                    + "AND param = '" + par + "'");
         }
         catch(Exception e){
             e.printStackTrace();

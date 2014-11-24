@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import CS3520.main.util.ItemGenerator;
+import CS3520.main.util.ItemListGenerator;
 
 /**
  *
@@ -31,10 +31,8 @@ public class SelectionServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        response.setContentType("text/html;charset=UTF-8");
         String iT = request.getParameter("itemType");
         String par = request.getParameter("param");
         ArrayList list = new ArrayList();
@@ -42,7 +40,7 @@ public class SelectionServlet extends HttpServlet {
         
         try {
             
-            list = ItemGenerator.getItemList(iT, par);
+            list = ItemListGenerator.getItemList(iT, par);
         }
         catch(Exception e){
            e.printStackTrace();
