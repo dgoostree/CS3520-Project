@@ -39,7 +39,7 @@ public class InitializeParameters extends HttpServlet {
         String[] productNames = {"Monitors", "Hard-drives", "Cases", "Memory"};
         sess.setAttribute("productNames", productNames);
         
-        String[] productValues = {"mon", "harddrive", "case", "memory"};
+        String[] productValues = {"Monitor", "Hard-drive", "Case", "Memory"};
         sess.setAttribute("productValues", productValues);
         
         String[] parameterLabel = { "Size", "Capacity", "Color", "Capacity"};

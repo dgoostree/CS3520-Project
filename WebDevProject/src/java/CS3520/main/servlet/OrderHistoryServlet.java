@@ -5,7 +5,7 @@
  */
 package CS3520.main.servlet;
 
-import CS3520.main.util.ItemGenerator;
+import CS3520.main.util.ItemListGenerator;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -25,7 +25,7 @@ public class OrderHistoryServlet extends HttpServlet {
         
         //Forward to order history
        
-        request.setAttribute("loopCount", ItemGenerator.getOrderHistoryCount());  //convert to integer and add to request object
+        request.setAttribute("loopCount", ItemListGenerator.getOrderHistoryCount());  //convert to integer and add to request object
         getServletContext().getRequestDispatcher("/orderHistory.jsp").forward(request, response);
         
     }

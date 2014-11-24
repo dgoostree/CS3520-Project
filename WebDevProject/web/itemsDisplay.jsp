@@ -23,7 +23,7 @@
                 <tr>
                     <td width="100px">
                         <%--<%= itemList.get(i).getName() %>--%>
-                        ${item.name}
+                        ${item.brand}
                     </td>
                     <td width="100px">                                
                         <%--<%= itemList.get(i).getParam() + modifier %>--%>
@@ -31,7 +31,7 @@
                     </td>
                     <td width="100px">
                         <%--<%= type %>--%>
-                        ${item.type}
+                        ${item.itemType}
                     </td>              
                 </tr>
 

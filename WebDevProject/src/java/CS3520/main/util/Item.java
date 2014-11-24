@@ -13,28 +13,33 @@ import java.io.Serializable;
  */
 
 public class Item implements Serializable{
-    public Item(String iT, String par, String name){
-        Random r = new Random();
-        double tmp = r.nextInt(101);
-        price = (Double.toString(tmp+=r.nextDouble()));
-        setType(iT);
-        setPar(par);
-        setBrand(name);
+    private String itemType;
+    private String param;
+    private String brand;
+    private String image;
+    private int item_number;
+    private double price;
+    
+    public Item(String iT, String par, String name, String im, int num, double pr){
+        this.itemType = iT;
+        this.param = par;
+        this.brand = name;
+        this.image = im;
+        this.item_number = num;
+        this.price = pr;
     }
     
-    public void setType(String s){
-        itemType = s;
+    public Item(){
+        this.brand = "";
+        this.image = "";
+        this.itemType = "";
+        this.item_number = 0;
+        this.param = "";
+        this.price = 0.00;
     }
     
-    public void setPar(String s){
-        param = s;
-    }
     
-    public void setBrand(String s){
-        name = s;
-    }
-    
-    public String getType(){
+    public String getItemType(){
         return itemType;
     }
     
@@ -43,10 +48,13 @@ public class Item implements Serializable{
     }
     
     public String getParamToString(){
-        if( itemType.equals("monitor")){
+        if( itemType.equals("Monitor")){
             return param + " inch";
         }
-        else if( itemType.equals("hard-drive")){
+        else if( itemType.equals("Hard-drive")){
+            return param + " GB";
+        }
+        else if(itemType.equals("Memory")){
             return param + " GB";
         }
         else {
@@ -54,12 +62,43 @@ public class Item implements Serializable{
         }
     }
     
-    public String getName(){
-        return name;
+    public String getBrand(){
+        return brand;
     }
     
-    private String itemType;
-    private String param;
-    private String name;
-    private String price;
+    public String getImage(){
+        return image;
+    }
+    
+    public int getItem_number(){
+        return item_number;
+    }
+    
+    public double getPrice(){
+        return price;
+    }
+    
+    public void setItemType(String s){
+        itemType = s;
+    }
+    
+    public void setParam(String s){
+        param = s;
+    }
+    
+    public void setBrand(String s){
+        brand = s;
+    }
+    
+    public void setImage(String s){
+        image = s;
+    }
+    
+    public void setItem_number(int i){
+        item_number = i;
+    }
+    
+    public void setPrice(double d){
+        price = d;
+    }
 }
