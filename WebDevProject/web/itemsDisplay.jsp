@@ -21,7 +21,7 @@
             <c:forEach var="item" items="${inventory}"> 
                 
                 <tr>
-                    <td width="100px">
+                    <td width="150px">
                         <%--<%= itemList.get(i).getName() %>--%>
                         ${item.brand}
                     </td>

@@ -23,7 +23,7 @@ public class ItemListGenerator implements Serializable{
     public static ArrayList getItemList(String iT, String par) throws SQLException{
         ArrayList list = new ArrayList();
         ResultSet rs = DBUtil.getItems(iT, par);
-        if(rs.next()){
+        while(rs.next()){
             Item item = new Item();
             item.setBrand(rs.getString("brand"));
             item.setParam(rs.getString("param"));
