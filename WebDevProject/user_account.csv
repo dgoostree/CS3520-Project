@@ -1,0 +1,11 @@
+username,password,firstname,lastname,email,billing_address,mailing_address,phone
+amylee,8132Tfuf,Amy,Everitt,amy@gmail.com,"5804 Fox Run Dr., Plainsboro, NJ 08540","5804 Fox Run Dr., Plainsboro, NJ 08540",906-202-3155
+dgoostree,gooseman85,Darren,Goostree,dgoose@yahoo.com,"9624 NW 7th Cir., Martinez, CA 94510","9624 NW 7th Cir., Martinez, CA 94510",707-654-8133
+dmarco,CS3520,Dan,Marconette,dmarco@csueastbay.edu,"58000 Carlos Bee Blvd., Hayward, CA 95060","58000 Carlos Bee Blvd., Hayward, CA 95060",609-623-5800
+jasmith,1234,Jane,Smith,jasmith@gmail.com,"15326 Holly Ln., Conroe, TX 77909","15326 Holly Ln., Conroe, TX 77909",936-264-1585
+jdoe,4321,John,Doe,jdoe@yahoo.com,"5804 Lombard St., San Francisco, CA 94555","58000 Carlos Bee Blvd., Hayward, CA 95060",707-315-8135
+jsmith,1234,John,Smith,jsmith@gmail.com,"15326 Holly Ln., Conroe, TX 77909","58000 Carlos Bee Blvd., Hayward, CA 95060",936-264-1585
+kdoe,5555,Kim,Doe,kdoe@yahoo.com,"5555 Main St., Palo Alto, CA 94566","5555 Main St., Palo Alto, CA 94566",906-609-6969
+keveritt,12remember,Keith,Everitt,keveritt@gmail.com,"6363 Jessica Marie St., North Las Vegas, NV 84591","6363 Jessica Marie St., North Las Vegas, NV 84591",702-374-1724
+madams,pugsley13,Morticia,Adams,madamadam@aol.com,"1313 Mockingbird Ln., Hollywood, CA 90201","1313 Mockingbird Ln., Hollywood, CA 90201",666-666-0666
+test,test,test,test,test,test,test,test
