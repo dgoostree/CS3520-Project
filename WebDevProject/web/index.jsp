@@ -64,8 +64,8 @@
                         </td>
                      </tr>
                      
-                     <c:forEach var="params" items="${sessionScope.parameterNames[outerLoop.count - 1]}">
-                         <c:forEach var="paramValue" items="${params}" varStatus="innerLoop">
+                     <c:forEach var="params" items="${sessionScope.parameterNames[outerLoop.count - 1]}" varStatus="innerLoop">
+                         <c:forEach var="paramValue" items="${params}" >
                              <tr>
                                 <td class="tab">
                                     
