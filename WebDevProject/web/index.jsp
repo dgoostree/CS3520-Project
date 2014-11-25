@@ -64,9 +64,7 @@
                         </td>
                      </tr>
                      
-                     <c:forEach var="params" items="${sessionScope.parameterNames[outerLoop.count - 1]}">
-                         <c:forEach var="paramValue" items="${params}" varStatus="innerLoop">
-                             <tr>
+                     <c:forEach var="params" items="${sessionScope.parameterNames[outerLoop.count - 1]}" varStatus="innerLoop"><tr>
                                 <td class="tab">
                                     
                                     <c:url value="SelectionServlet" var="itemSelection">
@@ -74,10 +72,9 @@
                                         <c:param name="param" value="${parameterValues[outerLoop.count - 1][innerLoop.count - 1]}"/>
                                     </c:url>
                                     
-                                    <a class="itemLink" href=" <c:out value="${itemSelection}" />">${paramValue}</a>
+                                    <a class="itemLink" href=" <c:out value="${itemSelection}" />">${params}</a>
                                 </td>
                              </tr>
-                         </c:forEach>
                      </c:forEach>
                  </c:forEach>
               </table>
