@@ -50,7 +50,7 @@
         
         <link rel="stylesheet" href="style/standard.css"/>
     </head>
-    <body>
+    <body class="background">
         <jsp:include page="/include/header.jsp"/>
         
         <h3>Account log in:</h3>
@@ -78,7 +78,7 @@
                 <tr>
                     <td></td>
                     <td align="right">
-                        <input type="button" value="Login" onclick="validateLogin(this.form)">
+                        <input type="button" value="Login" onclick="validateLogin(this.form)" class="btn">
                     </td>
                 </tr>
             </table>

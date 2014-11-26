@@ -76,7 +76,7 @@
         
         <link rel="stylesheet" href="style/standard.css"/>
     </head>
-    <body>
+    <body class="background">
         <jsp:include page="/include/header.jsp"/>
         
         <h3>Create a new account:</h3>
@@ -134,7 +134,7 @@
                 </tr>
                 <tr>
                     <td align="left">
-                        <input type="button" value="Update" onclick="confirmCompleted(this.form)">
+                        <input type="button" value="Update" onclick="confirmCompleted(this.form)" class="btn">
                     </td>
                 </tr>
             </table>

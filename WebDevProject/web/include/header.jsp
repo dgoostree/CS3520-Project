@@ -10,10 +10,10 @@
 
 <link rel="stylesheet" href="style/standard.css"/>
 
-<div id="header">
+<div id="header" >
     <div class="empty"></div>
     <div class="center">
-        <h1 class="pageTitle"><img class="logo" src="./images/logo.png">Cheap-O Components</h1>
+        <h1 class="pageTitle"><img class="logo" src="./images/logoBlue.png">Cheap-O Components</h1>
     </div>
     <div class="loginLink">
         <c:if test="${sessionScope.loggedIn==true}">
@@ -23,7 +23,8 @@
             <form action="AccountLogin">
                 <br>
                 <br>
-                <input type="submit" value="Login">
+                <input class="btn" type="submit" value=" L o g i n ">
+                <br>
                 <br>
                 <a href="accountCreation.jsp">Create Account</a>
             </form>

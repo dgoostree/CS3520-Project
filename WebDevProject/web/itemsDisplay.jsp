@@ -13,11 +13,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inventory List</title>
     </head>
-    <body>        
+    <body class="background">        
         <jsp:include page="/include/header.jsp"/>
         <h3 class="listStart">Here are the ${param.itemType}s we have in stock:</h3>
         
-        <table>
+        <table class="primary">
             <tr>
                 <th>Item Number</th>
                 <th>Image</th>
@@ -28,11 +28,11 @@
             <c:forEach var="item" items="${inventory}"> 
                 
                 <tr>
-                    <td cellspacing="5">
+                    <td cellspacing="5" align="center">
                         ${item.item_number}
                     </td>
                     <td>
-                        <img src="${pageContext.request.contextPath}${item.image}" alt="Should be a pic here">
+                        <img src="${pageContext.request.contextPath}${item.image}" alt="Should be a pic here" class="imgframe">
                     </td>
                     <td cellspacing="5">
                         <%--<%= itemList.get(i).getName() %>--%>
@@ -43,7 +43,7 @@
                         ${item.paramToString}
                     </td>
                     <td cellspacing="5">
-                        ${item.price}
+                        \$${item.price}
                     </td>
                 </tr>
 
@@ -51,7 +51,7 @@
         </table>
         <br>
         <form action="ClearServlet" method="post">
-            <input type="Submit" value="New search"/>
+            <input type="Submit" value="New search" class="btn"/>
         </form>
 
         <jsp:include page="/include/footer.jsp"/>

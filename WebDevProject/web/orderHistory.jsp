@@ -20,7 +20,7 @@
             }
         </script>
     </head>
-    <body>        
+    <body class="background">        
         <jsp:include page="/include/header.jsp"/>
         
         <h3>Account order history: </h3>
@@ -33,20 +33,22 @@
                 </tr>
             </c:forEach>
         </table>
-        <table>
+        <table class="new">
             <tr>
                 <td>
                     <h4><u>Account Management:</u></h4>
                 </td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/modAcct.jsp"><button type="button">Update</button></a>
+                    <a href="${pageContext.request.contextPath}/modAcct.jsp"><button type="button" class="btn">Update</button></a>
                 </td>
                 <td>
                     <form action="DeleteAccount" method="post" >
-                        <input type="button" value="Delete" onclick="deleteAccount(this.form)"/>
+                        <input type="button" value="Delete" onclick="deleteAccount(this.form)" class="btn"/>
                     </form>
                 </td>
             </tr>
+        </table>
+        <table>
             <tr>
                 <td>
                     <a href="/index.jsp">Back</a>

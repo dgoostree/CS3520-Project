@@ -48,7 +48,7 @@
         <link rel="stylesheet" href="style/standard.css"/>
         <jsp:include page="/include/header.jsp"/>
     </head>
-    <body>        
+    <body class="background">        
         <div>
             <h3>Product search:</h3>
         
