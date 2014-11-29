@@ -47,6 +47,7 @@ public class AccountLogin extends HttpServlet {
         }
         else if(loginStatus == true) {  //if already logged in, log out
             sess.removeAttribute("loggedIn");  //remove it from the object, so it comes in null
+            url = "/index.jsp";
         }
         
         

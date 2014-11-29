@@ -5,21 +5,19 @@
  */
 package CS3520.main.servlet;
 
+import CS3520.main.util.DBUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import CS3520.main.UserValidation;
-import CS3520.main.util.DBUtil;
-import javax.servlet.RequestDispatcher;
-
+import javax.servlet.http.HttpSession;
 /**
  *
- * @author Keith
+ * @author Darren
  */
-public class LoginServlet extends HttpServlet {
+public class AddToCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,22 +30,25 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("userName");
-        String password = request.getParameter("password");
-        String url = "/";
+
+        String prodNoStr = (String) request.getParameter("addItemNumber");
+        int test = Integer.valueOf(prodNoStr);
         
-        if(UserValidation.isValid(username, password, request)){
-            url = "/index.jsp";
-            request.removeAttribute("errMsg");
+        int rowsAdded = DBUtil.addToCart(request.getParameter("addUsername"),
+                Integer.valueOf(prodNoStr), 1);
+        
+        HttpSession sess = request.getSession();
+        sess.setAttribute("cartCount", DBUtil.getNumberOfProductsInCart(request.getParameter("addUsername")));
+        
+        if ( rowsAdded < 1) {
+            sess.setAttribute("alreadyInCart", "That item is already in your cart");
+        } else {
+            sess.removeAttribute("alreadyInCart");
         }
-        else{
-            url = "/login.jsp";
-            request.setAttribute("errMsg", "Username/Password combination invalid");
-        }
         
-        request.getSession().setAttribute("cartCount", DBUtil.getNumberOfProductsInCart(username));
         
-        getServletContext().getRequestDispatcher(url).forward(request, response);
+
+         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

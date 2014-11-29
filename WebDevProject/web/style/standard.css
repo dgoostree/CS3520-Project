@@ -16,7 +16,10 @@ form.headerForm { float:right; }
 div.loginLink { float:right; width: 12%; height: 100px; }
 div.empty {float:left; width: 33%; height: 100px; }
 div.center{float: left; width: 33%; height: 100px;}
-div.pageContent { text-align: center; }
+div.pageContent {  text-align: center; width: 80%; }
+div.productMenu {float:left;  width: 220px; height:100%;}
+div.pageHeader {}
+div.cartDisplay {float: right; width: 220px; height: 100%;}
 h1.pageTitle {text-align: center; font-weight: bold; }
 .clearer { clear: both; }
 h3.listStart{text-decoration: underline;}

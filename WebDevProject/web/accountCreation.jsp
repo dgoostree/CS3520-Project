@@ -94,12 +94,12 @@
         
         <link rel="stylesheet" href="style/standard.css"/>
     </head>
-    <body>
+    <body align="center">
         <jsp:include page="/include/header.jsp"/>
         
         <h3>Create a new account:</h3>
         <form action="CreateAccount" method="post">
-            <table>
+            <table align="center">
                 <tr>
                     <td colspan="2">
                         <span class="error">
@@ -151,7 +151,11 @@
                     <td class="error" id="phoneError"></td>
                 </tr>
                 <tr>
-                    <td align="left">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td align="right">
                         <input type="button" value="Create" onclick="confirmCompleted(this.form)">
                     </td>
                 </tr>

@@ -1,24 +1,16 @@
 <%-- 
-    Document   : index.jsp
-    Created on : Oct 27, 2014, 5:05:04 PM
-    Author     : keitheveritt
+    Document   : product_menu
+    Created on : Nov 28, 2014, 5:15:34 PM
+    Author     : Darren
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="style/standard.css"/>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
-    <!--Webpage created by Keith Everitt netID: wr5555 email: keveritt@horizon.csueastbay.edu
-        and Darren Goostree netID: sz5629 email: darrengoostree@gmail.com -->
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CS3520 HW Assignment 4</title>
-        <jsp:include page="/include/header.jsp"/>
-        
-    </head>
-    <body>        
-       <%-- <div class="productMenu">
+    
+    <body >
+        <div class="productMenu" align="left">
             <h3>Product search:</h3>
         
             <form action="SelectionServlet" method="get" class="clearer">
@@ -48,15 +40,7 @@
                  </c:forEach>
               </table>
             </form>
-        </div> --%>
-       <jsp:include page="/include/product_menu.jsp"/>  
-       <jsp:include page="/include/cart_display.jsp"/>
-       
-       <div class="pageContent">
-           <p align="center">Welcome to Cheap-O-Components! The cheapest place to find cheap-o stuff cheaply every cheap time!
-           <br style="clear:both;">
-       </div>
-       
-        <jsp:include page="/include/footer.jsp"/>
+            
+        </div>
     </body>
 </html>
