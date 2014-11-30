@@ -33,6 +33,7 @@ public class ItemListGenerator implements Serializable{
             item.setPrice(rs.getDouble("price"));
             list.add(item);
         }
+        
         return list;
     }
     

@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `web_dev_project` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `web_dev_project`;
--- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
+-- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
 -- Host: localhost    Database: web_dev_project
 -- ------------------------------------------------------
--- Server version	5.6.21
+-- Server version	5.6.21-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,6 +16,31 @@ USE `web_dev_project`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `cart_item`
+--
+
+DROP TABLE IF EXISTS `cart_item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cart_item` (
+  `user_name` varchar(20) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`user_name`,`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart_item`
+--
+
+LOCK TABLES `cart_item` WRITE;
+/*!40000 ALTER TABLE `cart_item` DISABLE KEYS */;
+INSERT INTO `cart_item` VALUES ('goose',14909,1),('goose',14910,1);
+/*!40000 ALTER TABLE `cart_item` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `items`
@@ -71,7 +96,7 @@ CREATE TABLE `user_account` (
 
 LOCK TABLES `user_account` WRITE;
 /*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
-INSERT INTO `user_account` VALUES ('amylee','8132Tfuf','Amy','Everitt','amy@gmail.com','5804 Fox Run Dr., Plainsboro, NJ 08540','5804 Fox Run Dr., Plainsboro, NJ 08540','906-202-3155'),('dgoostree','gooseman85','Darren','Goostree','dgoose@yahoo.com','9624 NW 7th Cir., Martinez, CA 94510','9624 NW 7th Cir., Martinez, CA 94510','707-654-8133'),('dmarco','CS3520','Dan','Marconette','dmarco@csueastbay.edu','58000 Carlos Bee Blvd., Hayward, CA 95060','58000 Carlos Bee Blvd., Hayward, CA 95060','609-623-5800'),('jasmith','1234','Jane','Smith','jasmith@gmail.com','15326 Holly Ln., Conroe, TX 77909','15326 Holly Ln., Conroe, TX 77909','936-264-1585'),('jdoe','4321','John','Doe','jdoe@yahoo.com','5804 Lombard St., San Francisco, CA 94555','58000 Carlos Bee Blvd., Hayward, CA 95060','707-315-8135'),('jsmith','1234','John','Smith','jsmith@gmail.com','15326 Holly Ln., Conroe, TX 77909','58000 Carlos Bee Blvd., Hayward, CA 95060','936-264-1585'),('kdoe','5555','Kim','Doe','kdoe@yahoo.com','5555 Main St., Palo Alto, CA 94566','5555 Main St., Palo Alto, CA 94566','906-609-6969'),('keveritt','12remember','Keith','Everitt','keveritt@gmail.com','6363 Jessica Marie St., North Las Vegas, NV 84591','6363 Jessica Marie St., North Las Vegas, NV 84591','702-374-1724'),('madams','pugsley13','Morticia','Adams','madamadam@aol.com','1313 Mockingbird Ln., Hollywood, CA 90201','1313 Mockingbird Ln., Hollywood, CA 90201','666-666-0666'),('test','test','test','test','test','test','test','test');
+INSERT INTO `user_account` VALUES ('amylee','8132Tfuf','Amy','Everitt','amy@gmail.com','5804 Fox Run Dr., Plainsboro, NJ 08540','5804 Fox Run Dr., Plainsboro, NJ 08540','906-202-3155'),('dgoostree','gooseman85','Darren','Goostree','dgoose@yahoo.com','9624 NW 7th Cir., Martinez, CA 94510','9624 NW 7th Cir., Martinez, CA 94510','707-654-8133'),('dmarco','CS3520','Dan','Marconette','dmarco@csueastbay.edu','58000 Carlos Bee Blvd., Hayward, CA 95060','58000 Carlos Bee Blvd., Hayward, CA 95060','609-623-5800'),('goose','asd','Darren','Goostree','dgoostree@bleh.com','1553 MyStreet Lane','1553 MyStreet Lane','9255556789'),('jasmith','1234','Jane','Smith','jasmith@gmail.com','15326 Holly Ln., Conroe, TX 77909','15326 Holly Ln., Conroe, TX 77909','936-264-1585'),('jdoe','4321','John','Doe','jdoe@yahoo.com','5804 Lombard St., San Francisco, CA 94555','58000 Carlos Bee Blvd., Hayward, CA 95060','707-315-8135'),('jsmith','1234','John','Smith','jsmith@gmail.com','15326 Holly Ln., Conroe, TX 77909','58000 Carlos Bee Blvd., Hayward, CA 95060','936-264-1585'),('kdoe','5555','Kim','Doe','kdoe@yahoo.com','5555 Main St., Palo Alto, CA 94566','5555 Main St., Palo Alto, CA 94566','906-609-6969'),('keveritt','12remember','Keith','Everitt','keveritt@gmail.com','6363 Jessica Marie St., North Las Vegas, NV 84591','6363 Jessica Marie St., North Las Vegas, NV 84591','702-374-1724'),('madams','pugsley13','Morticia','Adams','madamadam@aol.com','1313 Mockingbird Ln., Hollywood, CA 90201','1313 Mockingbird Ln., Hollywood, CA 90201','666-666-0666'),('test','test','test','test','test','test','test','test');
 /*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -84,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-24 17:10:11
+-- Dump completed on 2014-11-29 18:20:37

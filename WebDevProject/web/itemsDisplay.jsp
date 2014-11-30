@@ -55,14 +55,12 @@
                                 <form action="AddToCart" method="post">
                                     <input type="hidden" name="addUsername" value="${sessionScope.userName}"/>
                                     <input type="hidden" name="addItemNumber" value="${item.item_number}"/>
-                                    <input type="hidden" name="itemClass" value ="${requestScope.itemType}"/>
-                                    <input type="hidden" name="itemParameter" value="${requestScope.param}"/>
                                     <input type="submit" value="Add to cart"/>
                                 </form>
                             </c:if>
-                     <%--       <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">
+                            <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">
                                 <input type="submit" value="Add to cart" disabled/>
-                            </c:if>    --%>
+                            </c:if> 
 
                         </td>
                     </tr>
@@ -71,9 +69,9 @@
                 <tr>
                     <td></td>
                     <td class="error" colspan="2">
-                <C:if test="${sessionScope.alreadyInCart != null}">
-                    ${sessionScope.alreadyInCart}
-                </C:if>
+                      <%-- <C:if test="${sessionScope.alreadyInCart != null}">
+                            ${sessionScope.alreadyInCart}
+                        </C:if> --%>
                     </td>
 
                 </tr>

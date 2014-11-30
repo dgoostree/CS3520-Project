@@ -40,15 +40,17 @@ public class AddToCart extends HttpServlet {
         HttpSession sess = request.getSession();
         sess.setAttribute("cartCount", DBUtil.getNumberOfProductsInCart(request.getParameter("addUsername")));
         
+        String url;
+        
         if ( rowsAdded < 1) {
-            sess.setAttribute("alreadyInCart", "That item is already in your cart");
+            url = "/index.jsp";
         } else {
-            sess.removeAttribute("alreadyInCart");
+            url = (String)sess.getAttribute("previousSelectionRequestURL");
         }
         
         
 
-         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+         getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

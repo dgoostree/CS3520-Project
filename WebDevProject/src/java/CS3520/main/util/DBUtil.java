@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -31,6 +32,8 @@ public class DBUtil {
             Statement stmt = connection.createStatement();
             rs = stmt.executeQuery("Select * from items where type = '" + iT + "' "
                     + "AND param = '" + par + "'");
+            //stmt.close();
+            //connection.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getMessage());
@@ -58,6 +61,8 @@ public class DBUtil {
                 user.setMailingAddress(rs.getString("mailing_address"));
                 user.setPhone(rs.getString("phone"));
             }
+            //rs.close();
+            //connection.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getMessage());
@@ -77,6 +82,8 @@ public class DBUtil {
             if (!rs.next()) {
                 reply = true;
             }
+            //ustate.close();
+            //uconnect.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getMessage());
@@ -114,6 +121,9 @@ public class DBUtil {
             user.setBillingAddress(billingAddress);
             user.setMailingAddress(mailingAddress);
             user.setPhone(phone);
+
+            //stmt.close();
+            //connection.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getMessage());
@@ -134,10 +144,13 @@ public class DBUtil {
                 deleted = true;
                 request.getSession().removeAttribute("loggedIn");
             }
+            ps.close();
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getMessage());
         }
+
         return deleted;
     }
 
@@ -162,6 +175,8 @@ public class DBUtil {
             ps.setString(8, un);
 
             ps.executeUpdate();
+            ps.close();
+            connect.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getMessage());
@@ -173,40 +188,113 @@ public class DBUtil {
         try {
             ConnectionPool cp = ConnectionPool.getInstance();
             Connection connection = cp.getConnection(url, username, password);
-            String preparedQuery = "INSERT INTO cart_item(user_name, product_id, quantity)" + 
-                    "VALUES (?, ?, ?)";
+            String preparedQuery = "INSERT INTO cart_item(user_name, product_id, quantity)"
+                    + "VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(preparedQuery);
             stmt.setString(1, uname);
             stmt.setInt(2, pid);
             stmt.setInt(3, num);
-            return stmt.executeUpdate();
-        }
-        catch (Exception e){
+            int result = stmt.executeUpdate();
+            stmt.close();
+            connection.close();
+            return result;
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
         }
+
     }
-    
-    public static int getNumberOfProductsInCart(String uname){
+
+    public static int getNumberOfProductsInCart(String uname) {
         ResultSet rs = null;
         try {
             ConnectionPool cp = ConnectionPool.getInstance();
             Connection connection = cp.getConnection(url, username, password);
             Statement stmt = connection.createStatement();
             rs = stmt.executeQuery("Select * from cart_item where user_name = '" + uname + "'");
-            
+
             rs.last();
             int num = rs.getRow();
-            if (num >= 0){
+
+            stmt.close();
+            connection.close();
+
+            if (num >= 0) {
                 return num;
-            }
-            else {
+            } else {
                 return 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println(e.getMessage());
             return 0;
+        }
+    }
+
+    public static ResultSet getCartContents(String uname) {
+        ResultSet rs = null;
+        try {
+            ConnectionPool cp = ConnectionPool.getInstance();
+            Connection connection = cp.getConnection(url, username, password);
+            Statement stmt = connection.createStatement();
+            rs = stmt.executeQuery("SELECT item_number, brand, param, type, quantity, price FROM items, cart_item "
+                    + "WHERE user_name = '" + uname + "' AND item_number=product_id");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+        return rs;
+    }
+
+    public static void removeItemsFromCart(String uname, ArrayList<String> products) {
+        int count = products.size();
+
+        try {
+
+            ConnectionPool cp = ConnectionPool.getInstance();
+            Connection connection = cp.getConnection(url, username, password);
+            String query;
+            PreparedStatement ps = null;
+
+            for (int i = 0; i < count; i++) {
+                query = "DELETE FROM cart_item " + "WHERE user_name = ? AND product_id = ?";
+                ps = connection.prepareStatement(query);
+                ps.setString(1, uname);
+                ps.setInt(2, Integer.valueOf(products.get(i)));
+                ps.executeUpdate();
+            }
+
+            ps.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateCartContents(String uname, ArrayList<String> prodNos, ArrayList<String> quantities) {
+        int count = prodNos.size();
+
+        try {
+
+            ConnectionPool cp = ConnectionPool.getInstance();
+            Connection connection = cp.getConnection(url, username, password);
+            String query;
+            PreparedStatement ps = null;
+
+            for (int i = 0; i < count; i++) {
+                query = "UPDATE cart_item SET quantity = ? WHERE user_name = ? AND product_id = ?";
+                ps = connection.prepareStatement(query);
+                ps.setInt(1, Integer.valueOf(quantities.get(i)));
+                ps.setString(2, uname);
+                ps.setInt(3, Integer.valueOf(prodNos.get(i)));
+                ps.executeUpdate();
+            }
+
+            ps.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+
         }
     }
 

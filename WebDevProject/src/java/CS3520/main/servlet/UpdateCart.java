@@ -5,22 +5,21 @@
  */
 package CS3520.main.servlet;
 
+import CS3520.main.util.CartUtil;
+import CS3520.main.util.DBUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import CS3520.main.util.ItemListGenerator;
 
 /**
  *
- * @author Keith
+ * @author Darren
  */
-
-public class SelectionServlet extends HttpServlet {
+public class UpdateCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,28 +30,38 @@ public class SelectionServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String iT = request.getParameter("itemType");
-        String par = request.getParameter("param");
+
+        String username = (String) request.getSession().getAttribute("userName"); //get username
+        String[] quans = request.getParameterValues("cartItemQuantity");
+        String[] itemNos = request.getParameterValues("cartItemNumber");
+
+        ArrayList<String> toBeDeleted = new ArrayList<>();
+        ArrayList<String> updatedProdNo = new ArrayList();
+        ArrayList<String> updatedQuantities = new ArrayList<>();
         
-        //Build string of the most recent request url to selectionservlet
-        String url = "/SelectionServlet?itemType=" + iT + "&param=" + par;
-        request.getSession().setAttribute("previousSelectionRequestURL", url); //add it to session object
-        
-        ArrayList list = new ArrayList();
-        
-        try {
-            
-            list = ItemListGenerator.getItemList(iT, par);
+        for (int i = 0; i < quans.length; i++) {
+            if (quans[i].equals("") || (Integer.valueOf(quans[i]) < 1)) {//if blank or negative
+                toBeDeleted.add(itemNos[i]);                            //add to the list of those pending removal
+            }
+            else{                           //otherwise we add it to the lists pending update
+                updatedProdNo.add(itemNos[i]);
+                updatedQuantities.add(quans[i]);
+            }
         }
-        catch(Exception e){
-           e.printStackTrace();
-           System.err.println(e.getMessage());
+        if (toBeDeleted.size() > 0) {
+            DBUtil.removeItemsFromCart(username, toBeDeleted);//remove items if any are pending delete
         }
-        request.setAttribute("inventory", list);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/itemsDisplay.jsp");
-        dispatcher.forward(request, response);
+        
+        if (updatedProdNo.size() > 0){
+            DBUtil.updateCartContents(username, updatedProdNo, updatedQuantities);
+        }
+
+        CartUtil.populateCartContents(request, response);
+        request.getSession().setAttribute("cartCount", DBUtil.getNumberOfProductsInCart(username));
+        getServletContext().getRequestDispatcher("/view_cart.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

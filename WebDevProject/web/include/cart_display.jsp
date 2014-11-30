@@ -13,7 +13,7 @@
             <table>
                 <tr>
                     <td  colspan="2">
-                        
+
                         <h3>Your cart:</h3>
                     </td>
                 </tr>
@@ -29,13 +29,22 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        
-                        View cart
-                    </td>
-                    <td>
-                        Checkout
-                    </td>
+                    <c:if test="${sessionScope.loggedIn == false || sessionScope.loggedIn == null}">
+                        <td>
+                            View cart
+                        </td>
+                        <td>
+                            Checkout
+                        </td>
+                    </c:if>
+                    <c:if test="${sessionScope.loggedIn == true}">
+                        <td>
+                            <a href="ViewCart?requestedAction=View" class="itemLink">View cart</a>
+                        </td>
+                        <td>
+                            <a href="ViewCart?requestedAction=Checkout" class="itemLink">Checkout</a>
+                        </td>
+                    </c:if>
                 </tr>
             </table>
         </div>

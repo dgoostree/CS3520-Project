@@ -19,13 +19,7 @@
             <a href="OrderHistory" class="itemLink">${sessionScope.userName}</a> <a href="AccountLogin" class="itemLink">Log out</a>
         </c:if>
         <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">
-            <form action="AccountLogin">
-                <br>
-                <br>
-                <input type="submit" value="Login">
-                <br>
-                <a href="accountCreation.jsp">Create Account</a>
-            </form>
-        </c:if>
-            <br></div>
+            <a href="AccountLogin" class="itemLink">Log in</a> <a href="accountCreation.jsp" class="itemLink">Create Account</a>
+       </c:if>
+        <br></div>
 </div>
