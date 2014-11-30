@@ -38,8 +38,33 @@ CREATE TABLE `cart_item` (
 
 LOCK TABLES `cart_item` WRITE;
 /*!40000 ALTER TABLE `cart_item` DISABLE KEYS */;
-INSERT INTO `cart_item` VALUES ('goose',14909,1),('goose',14910,1);
 /*!40000 ALTER TABLE `cart_item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `history_item`
+--
+
+DROP TABLE IF EXISTS `history_item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `history_item` (
+  `order_number` int(11) NOT NULL,
+  `user_id` varchar(20) NOT NULL,
+  `product_number` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`order_number`,`user_id`,`product_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `history_item`
+--
+
+LOCK TABLES `history_item` WRITE;
+/*!40000 ALTER TABLE `history_item` DISABLE KEYS */;
+INSERT INTO `history_item` VALUES (3174,'goose',56543,3),(6679,'goose',14909,1),(6679,'goose',20009,1),(6679,'goose',33191,1),(8182,'goose',14909,1),(8182,'goose',20009,1),(8182,'goose',33191,1);
+/*!40000 ALTER TABLE `history_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -109,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-29 18:20:37
+-- Dump completed on 2014-11-29 23:48:58

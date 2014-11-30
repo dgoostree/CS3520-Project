@@ -343,4 +343,41 @@ public class DBUtil {
             e.printStackTrace();
         }
     }
+    
+    public static ResultSet getUniqueOrderNumbers(String uname){
+        ConnectionPool cp = ConnectionPool.getInstance();
+        Connection connection = cp.getConnection(url, username, password);
+        ResultSet res = null;
+        try {
+            String query = "SELECT DISTINCT order_number FROM history_item WHERE user_id = '" + uname + "'";
+            Statement stmt = connection.createStatement();
+            res = stmt.executeQuery(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    
+    public static ResultSet getItemsPerOrder(String uname, String orderNo){
+        ConnectionPool cp = ConnectionPool.getInstance();
+        Connection connection = cp.getConnection(url, username, password);
+        ResultSet res = null;
+        try {
+           String query; // = "SELECT brand, param, type, quantity, price FROM history_item, items "
+             //       + "WHERE user_id=? AND order_number =? AND product_number=item_number";
+            //PreparedStatement stmt = connection.prepareStatement(query);
+            //stmt.setString(1, uname);
+            //stmt.setInt(2, Integer.valueOf(orderNo));
+            
+            query = "SELECT item_number, brand, param, type, quantity, price FROM items, history_item "
+                    + "WHERE user_id = '" + uname + "' AND product_number = item_number "
+                    + " AND order_number= '" + orderNo + "'";
+            Statement stmt = connection.createStatement();
+            res = stmt.executeQuery(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return res;
+    }
 }

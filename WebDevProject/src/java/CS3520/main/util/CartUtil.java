@@ -53,6 +53,34 @@ public abstract class CartUtil {
         }
     }
     
-    
+    public static ArrayList<CartItem> populateHistoryList(ResultSet rs, HttpServletRequest request){
+        ArrayList<CartItem> orderContents = new ArrayList<CartItem>();
+
+        try {
+            
+                while (rs.next()) {
+                    CartItem item = new CartItem();
+                    item.setItemNumber(rs.getInt("item_number")); //populate our new item from the db
+                    item.setBrand(rs.getString("brand"));
+                    item.setParam(rs.getString("param"));
+                    item.setType(rs.getString("type"));
+                    int quan = rs.getInt("quantity");
+                    item.setQuantity(quan);
+                    double prc = rs.getDouble("price");
+                    prc = quan * prc;
+                    
+                    item.setPrice(prc);
+                    orderContents.add(item); //add to the list
+                }
+                rs.close();
+                
+                //request.getSession().setAttribute("cartContents", orderContents);  //add list to request object
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
+        return orderContents;
+    }
     
 }

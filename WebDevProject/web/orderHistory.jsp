@@ -45,19 +45,37 @@
                    
                 </table>
                 
-                <table align="center">
+                <table align="center" cellspacing="20">
                     <tr align="center">
                         <td>
                             <h3>Account order history: </h3>
                         </td>
                     </tr>
-                    <c:forEach  var="i" begin="${1}" end="${requestScope.loopCount}" >
+                    <tr>
+                        <td><b>Order number</b></td>
+                        <td colspan="3"><b>Product</b></td>
+                        <td><b>Quantity</b></td>
+                        <td><b>Price</b></td>
+                    </tr>
+                    <c:forEach items="${requestScope.orderNumbers}" var="item" varStatus="outerLoop">
                         <tr>
                             <td>
-                                Order history element is ${i}
+                                <b>${item}</b>
                             </td>
-                        <br>
                         </tr>
+                        
+                        <c:forEach items="${requestScope.orderContent[outerLoop.index]}" var="order" varStatus="innerLoop">
+                            <tr>
+                                <td></td>
+                                <td>${order.brand}</td>
+                                <td>${order.paramFormatted}</td>
+                                <td>${order.type}</td>
+                                <td>${order.quantity}</td>
+                                <td>${order.price}</td>
+                                
+                            </tr>
+                        </c:forEach>
+                        
                     </c:forEach>
                 </table>
                 
