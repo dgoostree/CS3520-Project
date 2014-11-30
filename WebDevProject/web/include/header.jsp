@@ -12,7 +12,7 @@
 <div id="header" style="overflow: hidden;" class="pageHeader"><br>
     <div class="empty"></div>
     <div class="center">
-        <h1 class="pageTitle"><a href="index.jsp"><img class="logo" src="./images/logo.png"></a>Cheap-O Components</h1>
+        <h1 class="pageTitle"><a href="index.jsp"><img class="logo" src="./images/logoBlue.png"></a>Cheap-O Components</h1>
     </div>
     <div class="loginLink">
         <c:if test="${sessionScope.loggedIn==true}">

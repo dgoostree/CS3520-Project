@@ -17,7 +17,7 @@
         <jsp:include page="/include/header.jsp"/>
 
     </head>
-    <body>        
+    <body class="background">        
 
         <jsp:include page="/include/product_menu.jsp"/>  
         <jsp:include page="/include/cart_display.jsp"/>
@@ -25,15 +25,15 @@
         <div class="pageContent">
             <img src="images/storefront.jpg" alt="whoops"> 
 
-            <p align="center">Welcome to Cheap-O-Components! The cheapest place to find cheap-o stuff cheaply every cheap time! For over thirty days,
-                we've offered the best products at the lowest prices.  Here at Cheap-O, we pride our selves in serving and being a part of our
+            <p align="center">Welcome to Cheap-O-Components! The cheapest place to find cheap-o stuff cheaply every time! For over thirty days,
+                we've offered the best products at the lowest prices.  Here at Cheap-O, we pride ourselves in serving and being a part of our
                 wonderful community</p><br><br>
             <p>All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.
-                All work and no play makes Jack a dull boy.<br> All work and no play makes Jack a dull boy.
-                All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.<br>
+                All work and no play makes Jack a dull boy.<br> Nothing to see here, move along please. 
+				Nothing to see here, move along please. Nothing to see here, move along please.<br>
                 All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.
-                All work and no play makes Jack a dull boy.<br> All work and no play makes Jack a dull boy.
-                All work and no play makes Jack a dull boy. All work and no play makes Jack a dull boy.</p>
+                All work and no play makes Jack a dull boy.<br> Nothing to see here, move along please. 
+				Nothing to see here, move along please. Nothing to see here, move along please.</p>
             <br style="clear:both;">
         </div>
 

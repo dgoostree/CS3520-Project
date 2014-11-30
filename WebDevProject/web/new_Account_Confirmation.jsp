@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="style/standard.css"/>
         <jsp:include page="/include/header.jsp"/>
     </head>
-    <body>
+    <body class="background">
         <h3>Hello ${sessionScope.newUser.firstName}, please confirm your account information below</h3>
         <hr>
         <div>
@@ -61,7 +61,7 @@
                 <tr>
                     <td> 
                         <form action="login.jsp" method="post">
-                            <input type="submit" name="confirm" value="Confirm">
+                            <input type="submit" name="confirm" value="Confirm" class="btn">
                         </form>
                     </td>
                 </tr>

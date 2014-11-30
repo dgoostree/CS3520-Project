@@ -76,7 +76,7 @@
 
         <link rel="stylesheet" href="style/standard.css"/>
     </head>
-    <body>
+    <body class="background">
         <jsp:include page="/include/header.jsp"/>
         <jsp:include page="/include/product_menu.jsp"/>  
         <jsp:include page="/include/cart_display.jsp"/>
@@ -140,7 +140,7 @@
                         <td></td>
                         <td></td>
                         <td align="right">
-                            <input type="button" value="Update" onclick="confirmCompleted(this.form)">
+                            <input type="button" value="Update" onclick="confirmCompleted(this.form)" class="btn">
                         </td>
                     </tr>
                 </table>

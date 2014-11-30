@@ -13,7 +13,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inventory List</title>
     </head>
-    <body align="center">        
+<<<<<<< HEAD
+    <body align="center" class="background">        
         <jsp:include page="/include/header.jsp"/>
         <jsp:include page="/include/product_menu.jsp"/>  
         <jsp:include page="/include/cart_display.jsp"/>  
@@ -21,7 +22,7 @@
              <%-- <h3 class="listStart">Here are the ${param.itemType}s we have in stock:</h3> --%>
              <br><br>
 
-            <table align="center">
+            <table align="center" class="primary">
                 <tr>
                     <th>Item Number</th>
                     <th>Image</th>
@@ -29,14 +30,13 @@
                     <th>Parameter</th>
                     <th>Price</th>
                 </tr>
-                <c:forEach var="item" items="${inventory}"> 
-
+                <c:forEach var="item" items="${inventory}">
                     <tr>
-                        <td cellspacing="5">
+                        <td cellspacing="5" align="center">
                             ${item.item_number}
                         </td>
                         <td>
-                            <img src="${pageContext.request.contextPath}${item.image}" alt="Should be a pic here">
+                            <img src="${pageContext.request.contextPath}${item.image}" alt="Should be a pic here" class="imgframe">
                         </td>
                         <td cellspacing="5">
                             <%--<%= itemList.get(i).getName() %>--%>
@@ -55,13 +55,12 @@
                                 <form action="AddToCart" method="post">
                                     <input type="hidden" name="addUsername" value="${sessionScope.userName}"/>
                                     <input type="hidden" name="addItemNumber" value="${item.item_number}"/>
-                                    <input type="submit" value="Add to cart"/>
+                                    <input type="submit" value="Add to cart" class="btn"/>
                                 </form>
                             </c:if>
                             <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">
-                                <input type="submit" value="Add to cart" disabled/>
+                                <input type="submit" value="Add to cart" class="btn"disabled/>
                             </c:if> 
-
                         </td>
                     </tr>
 

@@ -20,7 +20,7 @@
             }
         </script>
     </head>
-    <body>
+    <body class="background"> 
         <jsp:include page="/include/header.jsp"/>
         <div id="container">
             
@@ -28,24 +28,24 @@
             <jsp:include page="/include/cart_display.jsp"/>
             <div class="pageContent">
                 
-                <table align="center">
+                <table align="center" class="new">
                     <tr align="center">
                         <td>
-                            <h3>Account Management:</h3>
+                            <h4><u>Account Management:</u></h4>
                         </td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/modAcct.jsp"><button type="button">Update</button></a>
+                            <a href="${pageContext.request.contextPath}/modAcct.jsp"><button type="button" class="btn">Update</button></a>
                         </td>
                         <td>
                             <form action="DeleteAccount" method="post" >
-                                <input type="button" value="Delete" onclick="deleteAccount(this.form)"/>
+                                <input type="button" value="Delete" onclick="deleteAccount(this.form)" class="btn"/>
                             </form>
                         </td>
                     </tr>
                    
                 </table>
                 
-                <table align="center" cellspacing="20">
+                <table align="center" cellspacing="20" class="new">
                     <tr align="center">
                         <td>
                             <h3>Account order history: </h3>
