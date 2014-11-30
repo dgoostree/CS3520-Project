@@ -9,8 +9,9 @@ import CS3520.main.CartItem;
 import CS3520.main.util.CartUtil;
 import CS3520.main.util.DBUtil;
 import java.io.IOException;
-import java.sql.ResultSet;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Darren
  */
-public class ViewCart extends HttpServlet {
+public class CompleteCheckout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,21 +34,38 @@ public class ViewCart extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         
-
-        String action = (String) request.getParameter("requestedAction");
-        if (action.equals("Checkout")) {
-            CartUtil.populateCartContents(request, response); //in case user clicked from the link on the sidebar
-            getServletContext().getRequestDispatcher("/CheckoutServlet").forward(request, response);
-        } 
-        else if(action.equals("Update")){
-            getServletContext().getRequestDispatcher("/UpdateCart").forward(request, response);
+        //to inform user of credit card error
+        /*if(request.getSession().getAttribute("orderEmptyFields") == null){
+            request.getSession().setAttribute("orderEmptyFields", "Complete all fields to continue");
         }
         else {
-            CartUtil.populateCartContents(request, response);
-            getServletContext().getRequestDispatcher("/view_cart.jsp").forward(request, response);
-        }
+            request.getSession().removeAttribute("orderEmptyFields");
+        } */
+        
+        //
+        // In a live environment this would store the users data and print a more comprehensive order summary
+        
+        
+        //generate random order number
+        Random rand = new Random();
+        int orderNumber = rand.nextInt(10000) + 1;
+        
+        String shipTimeStr = (String)request.getSession().getAttribute("shipTime");
+        int shipTimeInt = Integer.valueOf(shipTimeStr);
+        request.setAttribute("deliveryTimeStart", shipTimeInt);
+        shipTimeInt += 3;
+        request.setAttribute("deliveryTimeEnd", shipTimeInt);
+        request.setAttribute("orderNumber", orderNumber);
+        
+        //remove the cart items from the data store, cart should now be empty
+        ArrayList<CartItem> purchasedItems = (ArrayList<CartItem>)request.getSession().getAttribute("cartContents");
+        String user = (String)request.getSession().getAttribute("userName");
+        DBUtil.addToHistory(orderNumber, user, purchasedItems);
+        DBUtil.emptyUserCart(user);
+        CartUtil.populateCartContents(request, response);
+        request.getSession().setAttribute("cartCount", DBUtil.getNumberOfProductsInCart(user));
+        getServletContext().getRequestDispatcher("/orderConfirmation.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

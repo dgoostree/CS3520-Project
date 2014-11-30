@@ -48,6 +48,14 @@
         <servlet-name>UpdateCart</servlet-name>
         <servlet-class>CS3520.main.servlet.UpdateCart</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <servlet-class>CS3520.main.servlet.CheckoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CompleteCheckout</servlet-name>
+        <servlet-class>CS3520.main.servlet.CompleteCheckout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SelectionServlet</servlet-name>
         <url-pattern>/SelectionServlet</url-pattern>
@@ -95,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>UpdateCart</servlet-name>
         <url-pattern>/UpdateCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <url-pattern>/CheckoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CompleteCheckout</servlet-name>
+        <url-pattern>/CompleteCheckout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

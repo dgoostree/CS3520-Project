@@ -29,7 +29,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <c:if test="${sessionScope.loggedIn == false || sessionScope.loggedIn == null}">
+                    <c:if test="${(sessionScope.loggedIn == false || sessionScope.loggedIn == null) || sessionScope.cartCount == null || 
+                          sessionScope.cartCount == '0'}">
                         <td>
                             View cart
                         </td>
@@ -37,7 +38,7 @@
                             Checkout
                         </td>
                     </c:if>
-                    <c:if test="${sessionScope.loggedIn == true}">
+                    <c:if test="${sessionScope.loggedIn == true && sessionScope.cartCount != null && sessionScope.cartCount != '0'}">
                         <td>
                             <a href="ViewCart?requestedAction=View" class="itemLink">View cart</a>
                         </td>

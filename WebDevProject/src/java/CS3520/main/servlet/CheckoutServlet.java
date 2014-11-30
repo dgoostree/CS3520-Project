@@ -5,22 +5,19 @@
  */
 package CS3520.main.servlet;
 
-import CS3520.main.CartItem;
-import CS3520.main.util.CartUtil;
-import CS3520.main.util.DBUtil;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Darren
  */
-public class ViewCart extends HttpServlet {
+public class CheckoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,20 +30,29 @@ public class ViewCart extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        
-
-        String action = (String) request.getParameter("requestedAction");
-        if (action.equals("Checkout")) {
-            CartUtil.populateCartContents(request, response); //in case user clicked from the link on the sidebar
-            getServletContext().getRequestDispatcher("/CheckoutServlet").forward(request, response);
-        } 
-        else if(action.equals("Update")){
-            getServletContext().getRequestDispatcher("/UpdateCart").forward(request, response);
+        if(request.getParameter("shippingMethod") == null){
+            getServletContext().getRequestDispatcher("/shipping.jsp").forward(request, response);
         }
         else {
-            CartUtil.populateCartContents(request, response);
-            getServletContext().getRequestDispatcher("/view_cart.jsp").forward(request, response);
+            HttpSession sess = request.getSession();
+            Double subTot = (Double)sess.getAttribute("orderTotal");// get the cart's subtotal from session
+            
+            //break up the parameter for shipping details
+            String shipParams = (String)request.getParameter("shippingMethod");
+            String[] shippingDetails = shipParams.split(",");
+            String shipCost = shippingDetails[0];
+            String shipDays = shippingDetails[1];
+            
+            Double shipCostD = Double.valueOf(shipCost);
+            shipCostD = Math.round(shipCostD * 100)/100.0;
+            
+            String finalTotal = String.format("%.2f", (shipCostD + subTot));
+            
+            request.getSession().setAttribute("shipCost", shipCost);
+            request.getSession().setAttribute("finalTotal", finalTotal);
+            request.getSession().setAttribute("shipTime", shipDays);
+            
+            getServletContext().getRequestDispatcher("/payment.jsp").forward(request, response);
         }
     }
 

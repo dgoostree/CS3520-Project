@@ -5,6 +5,7 @@
  */
 package CS3520.main.util;
 
+import CS3520.main.CartItem;
 import CS3520.main.UserValidation;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -298,4 +299,48 @@ public class DBUtil {
         }
     }
 
+    public static int addToHistory(int orderNumber, String uname, ArrayList<CartItem> purchasedItems) {
+
+        try {
+            ConnectionPool cp = ConnectionPool.getInstance();
+            Connection connection = cp.getConnection(url, username, password);
+            String preparedQuery;
+            PreparedStatement stmt;
+            int result = 0;
+            int size = purchasedItems.size();
+            for (int i = 0; i < size; i++) {
+                preparedQuery = "INSERT INTO history_item(order_number, user_id, product_number, quantity)"
+                        + "VALUES (?, ?, ?, ?)";
+                stmt = connection.prepareStatement(preparedQuery);
+
+                CartItem current = purchasedItems.get(i);
+
+                stmt.setInt(1, orderNumber);
+                stmt.setString(2, uname);
+                stmt.setInt(3, current.getItemNumber());
+                stmt.setInt(4, current.getQuantity());
+                result = stmt.executeUpdate();
+            }
+            //stmt.close();
+            connection.close();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+
+    }
+
+    public static void emptyUserCart(String uname) {
+        ConnectionPool cp = ConnectionPool.getInstance();
+        Connection connection = cp.getConnection(url, username, password);
+
+        try {
+            String query = "DELETE FROM cart_item WHERE user_name = '" + uname + "'";
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

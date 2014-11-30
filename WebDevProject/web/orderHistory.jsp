@@ -26,22 +26,8 @@
             
             <jsp:include page="/include/product_menu.jsp"/>
             <jsp:include page="/include/cart_display.jsp"/>
-            <div >
-                <table align="center">
-                    <tr align="center">
-                        <td>
-                            <h3>Account order history: </h3>
-                        </td>
-                    </tr>
-                    <c:forEach  var="i" begin="${1}" end="${requestScope.loopCount}" >
-                        <tr>
-                            <td>
-                                Order history element is ${i}
-                            </td>
-                        <br>
-                        </tr>
-                    </c:forEach>
-                </table>
+            <div class="pageContent">
+                
                 <table align="center">
                     <tr align="center">
                         <td>
@@ -58,7 +44,23 @@
                     </tr>
                    
                 </table>
-                <br style="clear:both;">
+                
+                <table align="center">
+                    <tr align="center">
+                        <td>
+                            <h3>Account order history: </h3>
+                        </td>
+                    </tr>
+                    <c:forEach  var="i" begin="${1}" end="${requestScope.loopCount}" >
+                        <tr>
+                            <td>
+                                Order history element is ${i}
+                            </td>
+                        <br>
+                        </tr>
+                    </c:forEach>
+                </table>
+                
             </div>
 
 
