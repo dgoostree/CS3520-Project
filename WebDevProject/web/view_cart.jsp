@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Shopping Cart</title>
     </head>
-    <body>
+    <body class="background">
         <jsp:include page="/include/header.jsp"/>
         <jsp:include page="/include/product_menu.jsp"/>  
         <jsp:include page="/include/cart_display.jsp"/> 

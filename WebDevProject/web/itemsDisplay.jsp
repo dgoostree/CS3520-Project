@@ -13,7 +13,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inventory List</title>
     </head>
-<<<<<<< HEAD
     <body align="center" class="background">        
         <jsp:include page="/include/header.jsp"/>
         <jsp:include page="/include/product_menu.jsp"/>  
