@@ -28,6 +28,7 @@
                     <th>Brand</th>
                     <th>Parameter</th>
                     <th>Price</th>
+                    <th></th>
                 </tr>
                 <c:forEach var="item" items="${inventory}">
                     <tr>

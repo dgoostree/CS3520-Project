@@ -23,7 +23,7 @@
             <p>Your order should arrive within ${deliveryTimeStart} and ${deliveryTimeEnd} business days. Your order number is <b>${orderNumber}</b> 
                 contact our non-existent customer service department should you have any concerns before then.</p>
             <br><br><br>
-            <a class="itemLink" href="index.jsp">Home</a>
+            <a class="itemLinkr" href="index.jsp">Home</a>
         </div>
 
         <jsp:include page="/include/footer.jsp"/>

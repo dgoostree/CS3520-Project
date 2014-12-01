@@ -40,10 +40,10 @@
                     </c:if>
                     <c:if test="${sessionScope.loggedIn == true && sessionScope.cartCount != null && sessionScope.cartCount != '0'}">
                         <td>
-                            <a href="ViewCart?requestedAction=View" class="itemLink">View cart</a>
+                            <a href="ViewCart?requestedAction=View" class="itemLinkr">View cart</a>
                         </td>
                         <td>
-                            <a href="ViewCart?requestedAction=Checkout" class="itemLink">Checkout</a>
+                            <a href="ViewCart?requestedAction=Checkout" class="itemLinkr">Checkout</a>
                         </td>
                     </c:if>
                 </tr>

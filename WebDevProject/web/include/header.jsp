@@ -16,10 +16,10 @@
     </div>
     <div class="loginLink">
         <c:if test="${sessionScope.loggedIn==true}">
-            <a href="OrderHistory" class="itemLink">${sessionScope.userName}</a> <a href="AccountLogin" class="itemLink">Log out</a>
+            <a href="OrderHistory" class="itemLinkr">${sessionScope.userName}</a> <a href="AccountLogin" class="itemLinkr">Log out</a>
         </c:if>
         <c:if test="${sessionScope.loggedIn==false || sessionScope.loggedIn==null}">
-            <a href="AccountLogin" class="itemLink">Log in</a> <a href="accountCreation.jsp" class="itemLink">Create Account</a>
+            <a href="AccountLogin" class="itemLinkr">Log in</a> <a href="accountCreation.jsp" class="itemLinkr">Create Account</a>
        </c:if>
         <br></div>
 </div>

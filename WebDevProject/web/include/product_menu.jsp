@@ -33,7 +33,7 @@
                                         <c:param name="param" value="${parameterValues[outerLoop.count - 1][innerLoop.count - 1]}"/>
                                     </c:url>
                                     
-                                    <a class="itemLink" href=" <c:out value="${itemSelection}" />">${params}</a>
+                                    <a class="itemLinkl" href=" <c:out value="${itemSelection}" />">${params}</a>
                                 </td>
                              </tr>
                      </c:forEach>
