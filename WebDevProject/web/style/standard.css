@@ -50,7 +50,8 @@ body.background {background:url(../images/backgrounds/circuit-board.jpg) no-repe
         -moz-background-size: cover;
         -o-background-size: cover;
         margin: 0;
-        padding: 0;}
+        padding: 0;
+        font-size: large;}
 header{
     background: lightgray;
 }
