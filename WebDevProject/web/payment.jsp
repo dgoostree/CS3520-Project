@@ -4,7 +4,7 @@
     Author     : Darren
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="style/standard.css"/>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
         <jsp:include page="/include/header.jsp"/>
         <jsp:include page="/include/product_menu.jsp"/>  
         <jsp:include page="/include/cart_display.jsp"/>
-
+        <link rel="stylesheet" href="style/standard.css"/>
         <div class="pageContent">
             <form action="CompleteCheckout" method="post">
                 <table align="center" cellspacing="20">
@@ -31,7 +31,7 @@
                             First name:
                         </td>
                         <td>
-                            <input type="text" name="shippingFName" value="${sessionScope.user.firstName}"
+                            <input type="text" name="shippingFName" value="${sessionScope.user.firstName}">
                         </td>
                         <td>
                             Last name:
@@ -42,8 +42,8 @@
                     </tr>
                     <tr>
                         <td>Address:</td>
-                        <td>
-                            <input type="text" name="shippingAddress" value="${sessionScope.user.mailingAddress}"/>
+                        <td colspan="3">
+                            <input type="text" name="shippingAddress" value="${sessionScope.user.mailingAddress}" size="48"/>
                         </td>
                     </tr>
                 </table>
@@ -58,7 +58,7 @@
                             First name:
                         </td>
                         <td>
-                            <input type="text" name="billingFName" value="${sessionScope.user.firstName}"
+                            <input type="text" name="billingFName" value="${sessionScope.user.firstName}">
                         </td>
                         <td>
                             Last name:
@@ -69,8 +69,8 @@
                     </tr>
                     <tr>
                         <td>Address:</td>
-                        <td>
-                            <input type="text" name="billingAddress" value="${sessionScope.user.billingAddress}"/>
+                        <td colspan="3">
+                            <input type="text" name="billingAddress" value="${sessionScope.user.billingAddress}" size="48"/>
                         </td>
                     </tr>
                     <tr>

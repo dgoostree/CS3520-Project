@@ -13,11 +13,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inventory List</title>
     </head>
-    <body align="center" class="background">        
+    <body class="background">        
         <jsp:include page="/include/header.jsp"/>
         <jsp:include page="/include/product_menu.jsp"/>  
         <jsp:include page="/include/cart_display.jsp"/>  
-        <div class="pageContent"
+        <div class="pageContent">
              <%-- <h3 class="listStart">Here are the ${param.itemType}s we have in stock:</h3> --%>
              <br><br>
 

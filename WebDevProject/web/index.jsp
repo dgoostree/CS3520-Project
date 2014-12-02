@@ -4,7 +4,7 @@
     Author     : keitheveritt
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="style/standard.css"/>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -12,6 +12,7 @@
     <!--Webpage created by Keith Everitt netID: wr5555 email: keveritt@horizon.csueastbay.edu
         and Darren Goostree netID: sz5629 email: darrengoostree@gmail.com -->
     <head>
+        <link rel="stylesheet" href="style/standard.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>CS3520 HW Assignment 4</title>
         <jsp:include page="/include/header.jsp"/>

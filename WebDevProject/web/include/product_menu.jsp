@@ -4,11 +4,11 @@
     Author     : Darren
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="style/standard.css"/>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    
+    <link rel="stylesheet" href="style/standard.css"/>
     <body >
         <div class="productMenu" align="left">
             <h3>Product search:</h3>
